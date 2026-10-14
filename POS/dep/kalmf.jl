@@ -7,8 +7,9 @@
 using Dates
 using KalmanFilters
 using Printf
-
 using InteractiveUtils
+include("fh.jl")
+
 
 ## TODO: ONCE I/O IS WORKING, CONVERT EVERYTHING TO REUSABLE FUNCTIONS
 
@@ -43,8 +44,14 @@ end
 
 
 
+# connect to I/O
+measurements::Vector{Float64} = zeros(1)
+deleteat!(measurements, 1)
 
-measurements = [1.87, 4.67, 1.89, 1.02, 1.59, 1.12, 3.54, 1.23, 1.27, 2.03, 1.22, 3.89]
+for i in eachindex(clTime)
+    push!(measurements, (svTime[i] - clTime[i]))
+end
+
 
 
 ## MAIN DEFINITIONS (ARBITRARY DATA, NEEDS TO BE A SCALAR AND NOT A VECTOR)
@@ -52,7 +59,7 @@ F = 1.0         # state-transaction matrix (1x1); F = [1] since no changes in st
 H = 1.0         # measurement matrix (1x1) ; H = [1] since there is a direct measurement of the state
 Q = 0.1         # var(q)
 R = 0.46        # var(w) or var(measurements)
-x_init = 3.45   # init est
+x_init = 1.0   # init est
 p_init = 1.0    # init cov(xₜ₋₁)
 
 
@@ -70,7 +77,7 @@ let mu = measurement_update(
 estimates = Float64[]
 push!(estimates, get_state(mu)[1])
 
-for z in measurements[2:end]
+for z ∈ measurements[2:end]
 
     prediction = time_update(
         get_state(mu),
