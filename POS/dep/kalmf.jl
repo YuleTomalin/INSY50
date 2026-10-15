@@ -8,7 +8,6 @@ using Dates
 using KalmanFilters
 using Printf
 using InteractiveUtils
-include("fh.jl")
 
 
 ## TODO: ONCE I/O IS WORKING, CONVERT EVERYTHING TO REUSABLE FUNCTIONS
@@ -34,14 +33,6 @@ struct TransactionAnalysis
     rₜ::Float32     #Stdized innov.
 end
 
-## Needs to have input from somewhere, I/O from fh.jl
-#transactionObj = TransactionRecord()
-#analObj = TransactionAnalysis()
-
-## TIME
-
-
-
 
 
 # connect to I/O
@@ -52,13 +43,11 @@ for i in eachindex(clTime)
     push!(measurements, (svTime[i] - clTime[i]))
 end
 
-
-
-## MAIN DEFINITIONS (ARBITRARY DATA, NEEDS TO BE A SCALAR AND NOT A VECTOR)
+# MAIN DEFINITIONS (ARBITRARY DATA, NEEDS TO BE A SCALAR AND NOT A VECTOR)
 F = 1.0         # state-transaction matrix (1x1); F = [1] since no changes in state
 H = 1.0         # measurement matrix (1x1) ; H = [1] since there is a direct measurement of the state
 Q = 0.1         # var(q)
-R = 0.46        # var(w) or var(measurements)
+R = 0.5        # var(w) or var(measurements)
 x_init = 1.0   # init est
 p_init = 1.0    # init cov(xₜ₋₁)
 
