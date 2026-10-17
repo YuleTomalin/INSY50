@@ -17,7 +17,7 @@ using CSV, DataFrames, Dates, Parsers, Plots
 
 ## TODO: Complete FILE HANDLING w/ automated folder finding and csv or zip
 
-fd = "/Users/sunlifehd/Documents/INSY50/POS/res/SAMPLE_250.csv"
+global dir = "/Users/sunlifehd/Documents/INSY50/POS/res/transactions.csv"
 
 """
     getClientTime(AbstractDataFrame)
@@ -27,10 +27,14 @@ fd = "/Users/sunlifehd/Documents/INSY50/POS/res/SAMPLE_250.csv"
     main input. Tᵢ = tₛ + (tₘₛ / 1000).
     ...
 """
-function getClientTime(df::DataFrame)
+function getClientTime(df::DataFrame) # in SS.sss
+    raw_cₕ = Dates.value.(Hour.(df[:, 3]))
+    sec_cₕ = raw_cₕ * 3600
+    raw_cₘ = Dates.value.(Minute.(df[:, 3]))
+    sec_cₘ = raw_cₘ * 60
     raw_cₛ = Dates.value.(Second.(df[:, 3]))
     raw_cₘₛ = Dates.value.(Millisecond.(df[:, 3]))
-    clTime::Vector{Float64} = raw_cₛ .+ (raw_cₘₛ ./ 1000)
+    clTime::Vector{Float64} = sec_cₕ + sec_cₘ + raw_cₛ .+ (raw_cₘₛ ./ 1000)
     return clTime
 end
 
@@ -42,10 +46,14 @@ end
     main input. Tₛ = tₛ + (tₘₛ / 1000).
     ...
 """
-function getServerTime(df::DataFrame)
+function getServerTime(df::DataFrame) # in SS.sss
+    raw_sₕ = Dates.value.(Hour.(df[:, 4]))
+    sec_sₕ = raw_sₕ * 3600
+    raw_sₘ = Dates.value.(Minute.(df[:, 4]))
+    sec_sₘ = raw_sₘ * 60
     raw_sₛ = Dates.value.(Second.(df[:, 4]))
     raw_sₘₛ = Dates.value.(Millisecond.(df[:, 4]))
-    svTime::Vector{Float64} = raw_sₛ .+ (raw_sₘₛ ./ 1000)
+    svTime::Vector{Float64} = sec_sₕ + sec_sₘ + raw_sₛ .+ (raw_sₘₛ ./ 1000)
     return svTime
 end
 
@@ -61,27 +69,3 @@ function getCSV(d::String, sink::Core.Any)
     df = CSV.read(d, sink)
     return df
 end
-
-df = getCSV(fd, DataFrame)
-#println(getServerTime(df), "--------------------\n")
-#println(getClientTime(df))
-
-gr()
-
-# this plots using GR
-#=
-x = range(0, 10, length=100)
-y = sin.(x)
-y_noisy = @. sin(x) + 0.1*randn()
-
-
-plot(x, y, label="sin(x)", lc=:black, lw=2)
-scatter!(x, y_noisy, label="data", mc=:red, ms=2, ma=0.5)
-plot!(legend=:bottomleft)
-title!("Sine with noise, plotted with GR")
-xlabel!("x")
-ylabel!("y")
-=#
-
-gui()
-readline()
