@@ -4,20 +4,24 @@
 """
 
 #import Pkg; Pkg.add("KalmanFilters")
+#import Pkg; Pkg.add("StatsPlots")
 using Dates
 using KalmanFilters
 using Printf
+using StatsPlots
 using InteractiveUtils
 
 include("fh.jl")
 
 
-## MAIN STRUCTS
 
-# connect to I/O
+# connected to I/O
 measurements::Vector{Float64} = zeros(1) # zₜ
 deleteat!(measurements, 1)
 estimates = Float64[] # xₜ
+std_innov = Float64[2001]
+#threshold = 3.0
+#anomalies = abs.(std_innov) .> threshold
 
 df = getCSV(dir, DataFrame)
 C_df = getClientTime(df)
@@ -43,6 +47,7 @@ let mu = measurement_update(
     R
 )
 
+
 # DO NOT UNCOMMENT, DEBUGGING PURPOSES ONLY
 #println(@which measurement_update(x_init,p_init,measurements[1],H,R))
 
@@ -51,14 +56,25 @@ push!(estimates, get_state(mu)[1])
 
 for z ∈ measurements[2:end]
 
-    prediction = time_update(
+    prediction = time_update( # Step 1 and 2 (xₜ₋₁ and pₜ₋₁)
         get_state(mu),
         get_covariance(mu),
         F,
         Q
     )
 
-    mu = measurement_update(
+    xₜ₋₁ = get_state(prediction)
+    pₜ₋₁ = get_covariance(prediction)
+
+    ν = z - (H * xₜ₋₁)[1]
+
+    S = (H * pₜ₋₁ * H')[1, 1] + R[1, 1]
+
+    r = ν / sqrt(S)
+
+    push!(std_innov, r) # y2
+
+    mu = measurement_update( # Steps 3 to 7 (νₜ -> Sₜ -> Kₜ -> x̂ₜ -> Pₜ)
         get_state(prediction),
         get_covariance(prediction),
         z,
@@ -66,14 +82,6 @@ for z ∈ measurements[2:end]
         R
     )
 
-    push!(estimates, get_state(mu)[1])
+    push!(estimates, get_state(mu)[1]) # y1
 end
- 
-# print/send to pl.jl
-for e ∈ estimates
-    @printf("Estimate %.3f\n", e) # adjust %.# for significant digits
-end
-
-## TODO: Replace @printf to regular output, then connect the entire filter together
-
 end ## let ... end 

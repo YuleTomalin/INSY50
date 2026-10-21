@@ -17,14 +17,14 @@ using CSV, DataFrames, Dates, Parsers, Plots
 
 ## TODO: Complete FILE HANDLING w/ automated folder finding and csv or zip
 
-global dir = "/Users/sunlifehd/Documents/INSY50/POS/res/transactions.csv"
+global dir = "/Users/sunlifehd/Documents/INSY50/POS/res/transactions_2000.csv"
 
 """
     getClientTime(AbstractDataFrame)
     ...
     Get the client initiation time (Tᵢ) using a DataFrame
     object (see getCSV(String, AbstractDataFrame)) as the 
-    main input. Tᵢ = tₛ + (tₘₛ / 1000).
+    main input. Tᵢ = tₛ + (tₘₛ / 1000). Outputs in SS.sss
     ...
 """
 function getClientTime(df::DataFrame) # in SS.sss
@@ -43,7 +43,7 @@ end
     ...
     Get the server processing time (Tₛ) using a DataFrame
     object (see getCSV(String, AbstractDataFrame)) as the 
-    main input. Tₛ = tₛ + (tₘₛ / 1000).
+    main input. Tₛ = tₛ + (tₘₛ / 1000). Outputs in SS.sss
     ...
 """
 function getServerTime(df::DataFrame) # in SS.sss
@@ -68,4 +68,15 @@ end
 function getCSV(d::String, sink::Core.Any)
     df = CSV.read(d, sink)
     return df
+end
+
+"""
+    getSteps(AbstractDataFrame)
+    ...
+    Get the time steps from a transaction CSV record.
+    ...
+"""
+function getSteps(df::DataFrame)
+    transstep = df[:, 6]
+    return transstep
 end
