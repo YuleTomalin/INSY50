@@ -10,18 +10,14 @@ using LaTeXStrings
 
 include("kalmf.jl")
 
-## TODO: Get estimate vector (example) to plot
-
 #display(plot(...))
 #savefig("name.png") or savefig(plot, "name.pdf")
 #png("name") or Plots.pdf(plot, "name")
 #use the macro @. to wrap every proceeding function with .
 # common attributes: lc, lw, mc, ms, ma
 
-#TODO: replace with customisable options (display HMS.s only or include DMY -> Connect to Dashboard l8r)
-#      connect the entire filter together
-#      time Steps from Tᵢ - Tᵢ₋₁
-#      graph zₜ (line), threshold (±), rₜ (scat) against time
+#TODO: replace with customisable options (Connect to Dashboard l8r)
+#       output to pdf once site is running (output -> res/)
 
 gr()
 

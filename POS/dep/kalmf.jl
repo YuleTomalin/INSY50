@@ -66,11 +66,11 @@ for z ∈ measurements[2:end]
     xₜ₋₁ = get_state(prediction)
     pₜ₋₁ = get_covariance(prediction)
 
-    ν = z - (H * xₜ₋₁)[1]
+    ν = z - (H * xₜ₋₁)[1] # innovation
 
-    S = (H * pₜ₋₁ * H')[1, 1] + R[1, 1]
+    S = (H * pₜ₋₁ * H')[1, 1] + R[1, 1] # innovation variance
 
-    r = ν / sqrt(S)
+    r = ν / sqrt(S) # standardized innovation
 
     push!(std_innov, r) # y2
 
