@@ -5,10 +5,23 @@
 
 #using Pkg; Pkg.add("Genie")
 
-using Genie
+using DataFrames, Genie, Genie.Renderer, Genie.Renderer.Html, Genie.Renderer.Json
 
-route("/hello") do 
-    "Hello, Julia!!!"
+
+route("/hello.html") do 
+    html("This is hello.html")
 end
 
+route("/hello.json") do 
+    json("Hello.json :)")
+end
+
+route("/hello.txt") do 
+    respond("some text", "text/csv")
+end
+
+greet() = "Genie he youkoso!"
+
+
+route("/greet", greet) # [GET] /greet => greet()
 up(8001, async=false)
