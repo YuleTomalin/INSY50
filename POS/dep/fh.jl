@@ -2,22 +2,14 @@
     Written by:satoshi
     Created At:2026年(令和8)10月12日
 """
+# IMPORTS
+include("../main.jl")
 
-## FILE HANDLING
+# TODO: Complete FILE HANDLING w/ automated folder finding and csv or zip
 
-## IMPORTS
-#import Pkg; Pkg.add("CSV")
-#import Pkg; Pkg.add("DataFrames")
-#import Pkg; Pkg.add("Dates")
-#import Pkg; Pkg.add("Parsers")
-#import Pkg; Pkg.add("Plots")
-
-using CSV, DataFrames, Dates, Parsers, Plots
-
-
-## TODO: Complete FILE HANDLING w/ automated folder finding and csv or zip
-
-global dir = "/Users/sunlifehd/Documents/INSY50/POS/res/transactions_2000.csv"
+filename::String = "transactions_2000.csv"
+__InpCSVDIR = joinpath(@__DIR__, "..", "res/")
+global dir = joinpath(__InpCSVDIR, filename)
 
 """
     getClientTime(AbstractDataFrame)

@@ -15,9 +15,10 @@
 - [ ] Implement Admin Dashboard w/ plotting capabilities
 - [ ] Database implementation (models only, no need for local sql servers)
 - [x] Testing w/ 2000 counts of data
-- [ ] Frontpage for showcasing product. Needs 
+- [ ] Frontpage for showcasing product.
 
 **HOW-TO**
+**BUILDING THE SOFTWARe FROM SCRATCH (Only way)**
 
 
 **License**

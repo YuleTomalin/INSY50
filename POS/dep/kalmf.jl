@@ -3,17 +3,8 @@
     Created At:2026年(令和8)10月12日
 """
 
-#import Pkg; Pkg.add("KalmanFilters")
-#import Pkg; Pkg.add("StatsPlots")
-using Dates
-using KalmanFilters
-using Printf
-using StatsPlots
-using InteractiveUtils
-
+include("../main.jl")
 include("fh.jl")
-
-
 
 # connected to I/O
 measurements::Vector{Float64} = zeros(1) # zₜ
