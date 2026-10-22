@@ -1,6 +1,7 @@
 """
     Written by:satoshi
-    Created At:2026年(令和8)10月12日
+    Created At: 2026年(令和8)10月12日
+    Description: File handling file for GAIA.
 """
 # IMPORTS
 include("../main.jl")

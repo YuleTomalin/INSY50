@@ -1,12 +1,11 @@
 """
     Written by:satoshi
-    Created At:2026年(令和8)10月21日
+    Created At: 2026年(令和8)10月21日
+    Description: Test, could be renamed l8r idk
 """
 
-#using Pkg; Pkg.add("Genie")
-
 using DataFrames, Genie, Genie.Renderer, Genie.Renderer.Html, Genie.Renderer.Json
-
+# TODO: DO EVERYTHING HERE
 
 route("/hello.html") do 
     html("This is hello.html")

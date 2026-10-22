@@ -1,7 +1,7 @@
 """
     Written by:satoshi
     Created At: 2026年(令和8)10月9日
-    Description: This is the main file for everything related to the POS
+    Description: This is the main file for everything related to the POS, GAIA
 """
 
 # MAIN FILE
@@ -15,6 +15,7 @@ import Pkg; Pkg.add("Dates")
 import Pkg; Pkg.add("Parsers")
 import Pkg; Pkg.add("KalmanFilters")
 import Pkg; Pkg.add("StatsPlots")
+import Pkg; Pkg.add("Genie")
 =#
 
 using LaTeXStrings
@@ -26,6 +27,7 @@ using Dates
 using Parsers
 using KalmanFilters
 using StatsPlots
+using Genie
 using Printf
 using InteractiveUtils
 
