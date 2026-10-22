@@ -21,6 +21,9 @@
 **BUILDING THE SOFTWARe FROM SCRATCH (Only way)**
 
 
+**NOTICE**
+This program is built in assistance of AI, but no part of the program/webapp uses an AI as part of the system or the features thereof.
+
 **License**
 
 MIT License
