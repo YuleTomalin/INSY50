@@ -15,7 +15,7 @@
 - [ ] Frontpage for showcasing product.
 
 **HOW-TO**
-**BUILDING THE SOFTWARe FROM SCRATCH (Only way)**
+**BUILDING THE SOFTWARE FROM SCRATCH (Only way)**
 
 
 **NOTICE**
