@@ -1,0 +1,186 @@
+┌ Info: 2026-10-24 18:35:21 Watching ["/Users/sunlifehd/Documents/INSY50/POS/site"]
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:19
+┌ Info: 2026-10-24 18:35:22 Web Sockets available at 127.0.0.1:8000 (via HTTP upgrade) 
+└ @ Genie.Server /Users/sunlifehd/.julia/packages/Genie/cruGP/src/Server.jl:219
+┌ Info: 2026-10-24 18:35:24 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:35:24 Web Server starting at http://127.0.0.1:8000 
+└ @ Genie.Server /Users/sunlifehd/.julia/packages/Genie/cruGP/src/Server.jl:219
+┌ Info: 2026-10-24 18:35:40 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:35:43 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:35:47 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:36:13 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Warning: 2026-10-24 18:36:47 UndefVarError(:q__page, 0x00000000000099d9, Main)
+└ @ Genie.Renderer.Html /Users/sunlifehd/.julia/packages/Genie/cruGP/src/renderers/Html.jl:161
+┌ Info: 2026-10-24 18:36:50 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:36:51 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:40:30 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:40:30 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:40:30 Calling finalizers
+└ @ Stipple /Users/sunlifehd/.julia/packages/Stipple/LOvUF/src/Stipple.jl:562
+┌ Info: 2026-10-24 18:41:37 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:41:37 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:41:37 Calling finalizers
+└ @ Stipple /Users/sunlifehd/.julia/packages/Stipple/LOvUF/src/Stipple.jl:562
+┌ Info: 2026-10-24 18:41:40 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:41:40 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:41:40 Calling finalizers
+└ @ Stipple /Users/sunlifehd/.julia/packages/Stipple/LOvUF/src/Stipple.jl:562
+┌ Info: 2026-10-24 18:41:45 Calling finalizers
+└ @ Stipple /Users/sunlifehd/.julia/packages/Stipple/LOvUF/src/Stipple.jl:562
+┌ Info: 2026-10-24 18:43:37 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:43:37 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:43:37 Calling finalizers
+└ @ Stipple /Users/sunlifehd/.julia/packages/Stipple/LOvUF/src/Stipple.jl:562
+┌ Info: 2026-10-24 18:43:40 Re-attaching handlers to model Main_ReactiveModel and updating values
+└ @ Stipple /Users/sunlifehd/.julia/packages/Stipple/LOvUF/src/Stipple.jl:716
+┌ Info: 2026-10-24 18:43:52 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:43:52 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:43:52 Calling finalizers
+└ @ Stipple /Users/sunlifehd/.julia/packages/Stipple/LOvUF/src/Stipple.jl:562
+┌ Info: 2026-10-24 18:43:57 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:43:57 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:43:57 Calling finalizers
+└ @ Stipple /Users/sunlifehd/.julia/packages/Stipple/LOvUF/src/Stipple.jl:562
+┌ Info: 2026-10-24 18:44:01 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:44:01 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:44:01 Calling finalizers
+└ @ Stipple /Users/sunlifehd/.julia/packages/Stipple/LOvUF/src/Stipple.jl:562
+┌ Info: 2026-10-24 18:44:04 Re-attaching handlers to model Main_ReactiveModel and updating values
+└ @ Stipple /Users/sunlifehd/.julia/packages/Stipple/LOvUF/src/Stipple.jl:716
+┌ Info: 2026-10-24 18:44:06 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:44:06 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:44:06 closing ws
+└ @ Genie.WebChannels /Users/sunlifehd/.julia/packages/Genie/cruGP/src/WebChannels.jl:389
+┌ Error: 2026-10-24 18:44:09 LoadError: ParseError:
+│ # Error @ /var/folders/p7/y7xkrqpj5nb1653gw5wt1z6r0000gn/T/jl_genie_build_hdbHSG/GenieViews/ae4e7cd88bc354dbe3ec485701b23b8713a2edac.jl:13:8
+│ q__layout(view="lHh Lpr lFf" , htmlsourceindent="2"  ) do;[
+│ q__con(<="" , htmlsourceindent="3" , ; NamedTuple{(Symbol("q-layout"), )}(("", ))... ) do;[
+│ #      └┘ ── not a unary operator
+│ Stacktrace:
+│    [1] top-level scope
+│      @ /var/folders/p7/y7xkrqpj5nb1653gw5wt1z6r0000gn/T/jl_genie_build_hdbHSG/GenieViews/ae4e7cd88bc354dbe3ec485701b23b8713a2edac.jl:13
+│    [2] include(mod::Module, _path::String)
+│      @ Base ./Base.jl:309
+│    [3] get_template(path::String; partial::Bool, context::Module, vars::@Kwargs{model::Main_ReactiveModel!_1, include_themes::Bool, include_deps::Bool})
+│      @ Genie.Renderer.Html ~/.julia/packages/Genie/cruGP/src/renderers/Html.jl:397
+│    [4] get_template
+│      @ ~/.julia/packages/Genie/cruGP/src/renderers/Html.jl:380 [inlined]
+│    [5] render(viewfile::FilePathsBase.PosixPath; layout::String, context::Module, vars::@Kwargs{model::Main_ReactiveModel!_1, include_themes::Bool, include_deps::Bool})
+│      @ Genie.Renderer.Html ~/.julia/packages/Genie/cruGP/src/renderers/Html.jl:475
+│    [6] render
+│      @ ~/.julia/packages/Genie/cruGP/src/renderers/Html.jl:471 [inlined]
+│    [7] render(::Type{MIME{Symbol("text/html")}}, viewfile::FilePathsBase.PosixPath; layout::String, context::Module, vars::@Kwargs{model::Main_ReactiveModel!_1, include_themes::Bool, include_deps::Bool})
+│      @ Genie.Renderer.Html ~/.julia/packages/Genie/cruGP/src/renderers/Html.jl:523
+│    [8] render
+│      @ ~/.julia/packages/Genie/cruGP/src/renderers/Html.jl:519 [inlined]
+│    [9] #html#34
+│      @ ~/.julia/packages/Genie/cruGP/src/renderers/Html.jl:679 [inlined]
+│   [10] (::Stipple.Pages.var"#8#9"{FilePathsBase.PosixPath, String, Module, Int64, Int64, Module, Bool, @Kwargs{include_themes::Bool, include_deps::Bool}, Page})()
+│      @ Stipple.Pages ~/.julia/packages/Stipple/LOvUF/src/Pages.jl:90
+│   [11] run_route(r::Genie.Router.Route)
+│      @ Genie.Router ~/.julia/packages/Genie/cruGP/src/Router.jl:597
+│   [12] route_request(req::HTTP.Request{HTTP.EmptyBody}, res::HTTP.Response{HTTP.EmptyBody}; stream::HTTP.Stream{false, HTTP.Request{HTTP.EmptyBody}})
+│      @ Genie.Router ~/.julia/packages/Genie/cruGP/src/Router.jl:196
+│   [13] route_request
+│      @ ~/.julia/packages/Genie/cruGP/src/Router.jl:171 [inlined]
+│   [14] handle_request(req::HTTP.Request{HTTP.EmptyBody}, res::HTTP.Response{HTTP.EmptyBody}; stream::HTTP.Stream{false, HTTP.Request{HTTP.EmptyBody}})
+│      @ Genie.Server ~/.julia/packages/Genie/cruGP/src/Server.jl:382
+│   [15] handle_request
+│      @ ~/.julia/packages/Genie/cruGP/src/Server.jl:374 [inlined]
+│   [16] (::Genie.Server.var"#39#40"{HTTP.Stream{false, HTTP.Request{HTTP.EmptyBody}}, HTTP.Request{HTTP.EmptyBody}, HTTP.Response{HTTP.EmptyBody}})()
+│      @ Genie.Server ~/.julia/juliaup/julia-1.13.1+0.x64.apple.darwin14/Julia-1.13.app/Contents/Resources/julia/share/julia/stdlib/v1.13/Distributed/src/macros.jl:126
+│   [17] #local_remotecall_thunk##0
+│      @ ~/.julia/juliaup/julia-1.13.1+0.x64.apple.darwin14/Julia-1.13.app/Contents/Resources/julia/share/julia/stdlib/v1.13/Distributed/src/remotecall.jl:425 [inlined]
+│   [18] run_work_thunk(thunk::Distributed.var"#local_remotecall_thunk##0#local_remotecall_thunk##1"{Genie.Server.var"#39#40"{HTTP.Stream{false, HTTP.Request{HTTP.EmptyBody}}, HTTP.Request{HTTP.EmptyBody}, HTTP.Response{HTTP.EmptyBody}}, Tuple{}, @Kwargs{}}, print_error::Bool)
+│      @ Distributed ~/.julia/juliaup/julia-1.13.1+0.x64.apple.darwin14/Julia-1.13.app/Contents/Resources/julia/share/julia/stdlib/v1.13/Distributed/src/process_messages.jl:70
+│   [19] #remotecall_fetch#108
+│      @ ~/.julia/juliaup/julia-1.13.1+0.x64.apple.darwin14/Julia-1.13.app/Contents/Resources/julia/share/julia/stdlib/v1.13/Distributed/src/remotecall.jl:450 [inlined]
+│   [20] remotecall_fetch
+│      @ ~/.julia/juliaup/julia-1.13.1+0.x64.apple.darwin14/Julia-1.13.app/Contents/Resources/julia/share/julia/stdlib/v1.13/Distributed/src/remotecall.jl:449 [inlined]
+│   [21] remotecall_fetch
+│      @ ~/.julia/juliaup/julia-1.13.1+0.x64.apple.darwin14/Julia-1.13.app/Contents/Resources/julia/share/julia/stdlib/v1.13/Distributed/src/remotecall.jl:492 [inlined]
+│   [22] setup_http_listener(req::HTTP.Request{HTTP.EmptyBody}, res::HTTP.Response{HTTP.EmptyBody}; stream::HTTP.Stream{false, HTTP.Request{HTTP.EmptyBody}})
+│      @ Genie.Server ~/.julia/packages/Genie/cruGP/src/Server.jl:481
+│  ┌[23] setup_http_listener
+│  │   @ ~/.julia/packages/Genie/cruGP/src/Server.jl:478 [inlined]
+│  ╰──── repeated 2 times
+│   [25] (::Genie.Server.var"#streamhandler##0#streamhandler##1"{typeof(Genie.Server.setup_http_listener)})(stream::HTTP.Stream{false, HTTP.Request{HTTP.EmptyBody}})
+│      @ Genie.Server ~/.julia/packages/Genie/cruGP/src/Server.jl:415
+│   [26] setup_http_streamer(stream::HTTP.Stream{false, HTTP.Request{HTTP.EmptyBody}})
+│      @ Genie.Server ~/.julia/packages/Genie/cruGP/src/Server.jl:468
+│   [27] (::Genie.Server.var"#17#18")(stream::HTTP.Stream{false, HTTP.Request{HTTP.EmptyBody}})
+│      @ Genie.Server ~/.julia/packages/Genie/cruGP/src/Server.jl:153
+│   [28] _serve_h1_conn!(server::HTTP.Server{Genie.Server.var"#17#18"}, tracked::HTTP._ServerConn, reader_source::HTTP._ServerPrefaceConn{Reseau.TCP.Conn}, header_deadline_armed::Bool)
+│      @ HTTP ~/.julia/packages/HTTP/wGzwH/src/http_server.jl:1293
+│   [29] _serve_conn!(server::HTTP.Server{Genie.Server.var"#17#18"}, tracked::HTTP._ServerConn)
+│      @ HTTP ~/.julia/packages/HTTP/wGzwH/src/http_server.jl:1238
+│   [30] (::HTTP.var"#_serve_listener!##0#_serve_listener!##1"{HTTP.Server{Genie.Server.var"#17#18"}, HTTP._ServerConn})()
+│      @ HTTP ~/.julia/packages/HTTP/wGzwH/src/HTTP.jl:31
+│ in expression starting at /var/folders/p7/y7xkrqpj5nb1653gw5wt1z6r0000gn/T/jl_genie_build_hdbHSG/GenieViews/ae4e7cd88bc354dbe3ec485701b23b8713a2edac.jl:13
+│ 
+└ @ Genie.Server /Users/sunlifehd/.julia/packages/Genie/cruGP/src/Server.jl:510
+┌ Info: 2026-10-24 18:44:09 Calling finalizers
+└ @ Stipple /Users/sunlifehd/.julia/packages/Stipple/LOvUF/src/Stipple.jl:562
+┌ Error: 2026-10-24 18:44:09 KeyError("autoreload")
+└ @ Genie.WebChannels /Users/sunlifehd/.julia/packages/Genie/cruGP/src/WebChannels.jl:346
+┌ Info: 2026-10-24 18:44:17 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:44:19 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:44:19 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Warning: 2026-10-24 18:44:25 UndefVarError(:q__container, 0x0000000000009a7e, Main)
+└ @ Genie.Renderer.Html /Users/sunlifehd/.julia/packages/Genie/cruGP/src/renderers/Html.jl:161
+┌ Info: 2026-10-24 18:45:26 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:45:26 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:45:26 Calling finalizers
+└ @ Stipple /Users/sunlifehd/.julia/packages/Stipple/LOvUF/src/Stipple.jl:562
+┌ Info: 2026-10-24 18:45:33 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:45:33 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:45:33 closing ws
+└ @ Genie.WebChannels /Users/sunlifehd/.julia/packages/Genie/cruGP/src/WebChannels.jl:389
+┌ Info: 2026-10-24 18:45:34 Calling finalizers
+└ @ Stipple /Users/sunlifehd/.julia/packages/Stipple/LOvUF/src/Stipple.jl:562
+┌ Error: 2026-10-24 18:45:34 KeyError("autoreload")
+└ @ Genie.WebChannels /Users/sunlifehd/.julia/packages/Genie/cruGP/src/WebChannels.jl:346
+┌ Info: 2026-10-24 18:45:35 Re-attaching handlers to model Main_ReactiveModel and updating values
+└ @ Stipple /Users/sunlifehd/.julia/packages/Stipple/LOvUF/src/Stipple.jl:716
+┌ Info: 2026-10-24 18:45:40 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:45:40 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:45:40 Calling finalizers
+└ @ Stipple /Users/sunlifehd/.julia/packages/Stipple/LOvUF/src/Stipple.jl:562
+┌ Info: 2026-10-24 18:45:43 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:45:43 Autoreloading
+└ @ GenieAutoReload /Users/sunlifehd/.julia/packages/GenieAutoReload/TIvhf/src/GenieAutoReload.jl:22
+┌ Info: 2026-10-24 18:45:43 Calling finalizers
+└ @ Stipple /Users/sunlifehd/.julia/packages/Stipple/LOvUF/src/Stipple.jl:562

@@ -16,6 +16,7 @@ import Pkg; Pkg.add("Parsers")
 import Pkg; Pkg.add("KalmanFilters")
 import Pkg; Pkg.add("StatsPlots")
 import Pkg; Pkg.add("Genie")
+import Pkg; Pkg.add("GenieFramework")
 =#
 
 using LaTeXStrings
@@ -28,6 +29,7 @@ using Parsers
 using KalmanFilters
 using StatsPlots
 using Genie
+using GenieFramework
 using Printf
 using InteractiveUtils
 
