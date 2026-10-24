@@ -7,14 +7,11 @@
 
 **TODO:**
 
-- [x] I/O w/ CSV
-- [x] Kalman Filter implementation (Non-vectorial 1D) {kalmf.jl}
 - [x] Plotting {pl.jl} (NEEDS REVISION)
 - [ ] Build POS WebSystem Main Page
 - [ ] POS WebSystem Admin Page and Dashboard
 - [ ] Implement Admin Dashboard w/ plotting capabilities
 - [ ] Database implementation (models only, no need for local sql servers)
-- [x] Testing w/ 2000 counts of data
 - [ ] Frontpage for showcasing product.
 
 **HOW-TO**
