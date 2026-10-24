@@ -19,20 +19,10 @@ import Pkg; Pkg.add("Genie")
 import Pkg; Pkg.add("GenieFramework")
 =#
 
-using LaTeXStrings
-using Peaks
-using Measures
-using CSV
-using DataFrames
-using Dates
-using Parsers
-using KalmanFilters
-using StatsPlots
-using Genie
-using GenieFramework
-using Printf
-using InteractiveUtils
-
-
 #__RelDIR = joinpath(@__DIR__, "main.jl")
-__DirPDF = joinpath(@__DIR__, "dataplot.pdf")
+
+module mainModule
+export __DirPDF
+
+__DirPDF = joinpath(@__DIR__, "res/dataplot.pdf")
+end

@@ -3,10 +3,21 @@
     Created At: 2026年(令和8)10月12日
     Description: File handling file for GAIA.
 """
-# IMPORTS
-include("../main.jl")
 
-# TODO: Complete FILE HANDLING w/ automated folder finding and csv or zip
+module fhMod
+
+# Using
+using CSV, DataFrames, Dates, Parsers
+
+# Functions
+export getClientTime, getServerTime, getCSV, dir, std_innov, getSteps
+
+# Includes
+
+
+#==========#
+
+# TODO: automated folder finding and csv or zip
 
 filename::String = "transactions_2000.csv"
 __InpCSVDIR = joinpath(@__DIR__, "..", "res/")
@@ -73,3 +84,5 @@ function getSteps(df::DataFrame)
     transstep = df[:, 6]
     return transstep
 end
+
+end # module
