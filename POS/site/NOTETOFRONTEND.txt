@@ -1,2 +1,0 @@
-Guys, so y'll need to delete some files here in the site/ folder (or maybe all the code herein) 
-since I can't use the UI/No-code editor, and can only use the GenieFramework
