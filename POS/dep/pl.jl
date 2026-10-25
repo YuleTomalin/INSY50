@@ -4,8 +4,22 @@
     Description: This file is the main plotting file for GAIA.
 """
 
-include("../main.jl")
+module plMod
+# Using
+using Plots, Measures, LaTeXStrings, Peaks, DataFrames
+
+# Includes
+include("fh.jl")
 include("kalmf.jl")
+include("../main.jl")
+
+# Functions
+using .fhMod
+using .kfMod
+using .mainModule
+
+
+#==========#
 
 #display(plot(...))
 #savefig("name.png") or savefig(plot, "name.pdf")
@@ -29,13 +43,13 @@ include("kalmf.jl")
 function plotStdInnov(steps::Vector{Int64}, standardized_innovation::Vector{Float64},  xlbl_main::String, toPdf::Bool, dirPdf::String)
     gr()
 
-    #max_innov, max_idx_innov = findmaxima(std_innov)
-    #min_innov, min_idx_innov = findmin(std_innov)
+    max_innov, max_idx_innov = findmaxima(standardized_innovation)
+    min_innov, min_idx_innov = findminima(standardized_innovation)
 
     # Left plot
     p_seq = plot(steps[2:end], standardized_innovation[2:end], label="Std Innov", xlabel=xlbl_main, ylabel="Value", lc=:red, alpha=0.8, lw=:0.7, ylims=(-30, 50))
-    #scatter!([max_innov], [max_idx_innov], label="SI Peak per Transaction", mc=:black, ma=1, ms=3)
-    #scatter!([min_innov], [min_idx_innov], label="SI Min / Transaction", mc=:green, ma=1, ms=3)
+    scatter!([max_innov], [max_idx_innov], label="SI ±Peaks per Transaction", mc=:black, ma=1, ms=3)
+    scatter!([min_innov], [min_idx_innov], legend_marker_shapesize=2,label="SI Min / Transaction", mc=:green,ma=1, ms=1)
     hline!([2.97, -2.97], color=:black, ls=:dash, label="±2.97")
 
     # Right plot
@@ -48,7 +62,7 @@ function plotStdInnov(steps::Vector{Int64}, standardized_innovation::Vector{Floa
     custom_layout = grid(1, 2, widths=[0.75, 0.25])
 
     # Combining then side-by-side
-    fpl = plot(p_seq, p_dens, layout=custom_layout, size=(2560, 1440), title=["Innovation Sequence" "Distribution Profile"], bottom_margin = 10mm, left_margin = 10mm)
+    fpl = plot(p_seq, p_dens, layout=custom_layout, size=(2560, 1440), title=["Innovation Sequence" "Distribution Profile"], bottom_margin=10mm, left_margin=10mm)
 
     if toPdf == true
         Plots.pdf(fpl, dirPdf)
@@ -60,3 +74,5 @@ function plotStdInnov(steps::Vector{Int64}, standardized_innovation::Vector{Floa
 end
 
 plotStdInnov(getSteps(df), std_innov, "Transaction Steps (Jun, 2026 - Oct, 2026), 30 to 70 transactions @ specific dates", true, __DirPDF)
+
+end # module

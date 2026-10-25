@@ -4,10 +4,19 @@
     Description: Main algorithm of GAIA, the Kalman Filter. This filter singles out needed data and 
 """
 
-include("../main.jl")
+module kfMod
+# Using
+using StatsPlots, KalmanFilters, Dates, DataFrames, InteractiveUtils
+
+# Includes
 include("fh.jl")
 
-# connected to I/O
+# Functions
+using .fhMod
+export df, std_innov
+
+#==========#
+
 measurements::Vector{Float64} = zeros(1) # zₜ
 deleteat!(measurements, 1)
 estimates = Float64[] # xₜ
@@ -77,3 +86,5 @@ for z ∈ measurements[2:end]
     push!(estimates, get_state(mu)[1]) # y1
 end
 end ## let ... end 
+
+end # module

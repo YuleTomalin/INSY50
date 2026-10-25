@@ -16,21 +16,14 @@ import Pkg; Pkg.add("Parsers")
 import Pkg; Pkg.add("KalmanFilters")
 import Pkg; Pkg.add("StatsPlots")
 import Pkg; Pkg.add("Genie")
+import Pkg; Pkg.add("GenieFramework")
+import Pkg; Pkg.add("Measures")
 =#
 
-using LaTeXStrings
-using Peaks
-using Measures
-using CSV
-using DataFrames
-using Dates
-using Parsers
-using KalmanFilters
-using StatsPlots
-using Genie
-using Printf
-using InteractiveUtils
-
-
 #__RelDIR = joinpath(@__DIR__, "main.jl")
-__DirPDF = joinpath(@__DIR__, "dataplot.pdf")
+
+module mainModule
+export __DirPDF
+
+__DirPDF = joinpath(@__DIR__, "res/dataplot.pdf")
+end
