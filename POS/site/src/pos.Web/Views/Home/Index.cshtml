@@ -1,8 +1,139 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "POS Terminal";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@*Just sample products on c#*@
+@functions {
+    public class Product
+    {
+        //obviously just setting up properties for the products
+        public string Name { get; set; } = "";
+        public decimal Price { get; set; }
+        public string ImageUrl { get; set; } = "";
+    }
+}
+
+@{
+    ViewData["Title"] = "POS Terminal";
+
+    // sample products
+    var products = new List<Product>
+    {
+        new Product {Name = "Big Burger ni Aldrin", Price = 125, ImageUrl = "/images/burgernialdrin.png" },
+        new Product {Name = "Yummy Hotdog ni Yule", Price = 115, ImageUrl = "/images/hotdog.png" },
+        new Product {Name = "Medium Fries", Price = 65, ImageUrl = "/images/fries.png" },
+        new Product {Name = "6 pc. Crispy Nigglets", Price = 10, ImageUrl = "/images/nuggets.png" },
+        new Product {Name = "Cocaine (1KG)", Price = 15000, ImageUrl = "/images/coke.png" },
+        new Product {Name = "Strawblueberry Juice", Price = 85, ImageUrl = "/images/juice.png" },
+        new Product {Name = "Ang BLACK ni Bluejay", Price = 200000, ImageUrl = "/images/black.png" },
+        new Product {Name = "Pancake", Price = 140, ImageUrl = "/images/pancake.png" },
+        /*you should be able to add one here with the similar format as above, 
+        this is just temporary though since we the info/products for this later on the supposed DB.
+        
+        So yes this is safe to remove, although the products obviously wouldn't be there.*/
+    };
+}
+
+@*3 containers*@
+<div class="flex h-[calc(100vh-4rem)] w-full gap-3 p-3 bg-gray-100 overflow-hidden box-border">
+
+    @*supposed sidebar (not yet developed)*@
+    <aside class="w-48 bg-white border border-gray-300 rounded-lg p-3 flex flex-col gap-2 overflow-y-auto">
+        @*empty empty empty*@
+    </aside>
+
+@*main products container/section*@
+<section class="flex-1 bg-white border border-gray-300 rounded-xl p-4 flex flex-col h-full overflow-hidden">
+    
+    @*search bar*@
+    <div class="mb-4 flex-none">
+        <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-gray-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </span>
+            @*input here*@
+            <input type="text"
+                id="search-input"
+                placeholder="Search menu items here, greetings from Teto btw..."
+                class="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:bg-white transition" />
+        </div>
+    </div>
+
+    @*product grid container*@ 
+    <div class="grid grid-cols-3 gap-3 overflow-y-auto flex-1 content-start auto-rows-max pr-1">
+        @*c# spotted around here*@
+        @foreach (var item in products)
+        {
+            <div class="product-card border border-gray-200 rounded-xl p-3 flex flex-col items-center justify-between text-center bg-gray-100 hover:border-gray-400 hover:shadow-sm cursor-pointer transition h-44 select-none">
+                
+                @*imges*@
+                <div class="h-28 w-full bg-gray-50 rounded-lg overflow-hidden">
+                    <img src="@item.ImageUrl" 
+                        alt="@item.Name" 
+                        class="h-full w-full object-cover" />
+                </div>
+
+                @*name & price*@
+                <div class="w-full">
+                    <h4 class="product-title font-semibold text-gray-800 text-xs truncate" title="@item.Name">
+                        @item.Name
+                    </h4>
+                    <p class="text-xs font-bold text-gray-600 mt-0.5">
+                        ₱@item.Price.ToString("0.00")
+                    </p>
+                </div>
+
+            </div>
+        }
+    </div>
+
+</section>
+
+    @*supposed order info*@
+    <aside class="w-80 bg-white border border-gray-300 rounded-lg p-4 flex flex-col justify-between overflow-hidden">
+        
+        @*still not yet done, but this is already alloted for when the func. is done*@
+        <div class="flex-1 flex flex-col overflow-hidden">
+            
+            @*for the added items*@
+            <div class="flex-1 overflow-y-auto my-2">
+                @*blank blank blank*@
+            </div>
+
+            @*totals*@
+            <div class="border-t border-gray-200 pt-3">
+                @*blank blank blank*@
+            </div>
+        </div>
+
+        @*supposed pay button*@
+        <div class="border-t border-gray-200 pt-3 flex flex-col gap-2">
+            @*blank blank blank*@
+        </div>
+
+    </aside>
+
 </div>
+
+@*the search func, on c#*@
+<script>
+    const searchInput = document.getElementById('search-input');
+    const productCards = document.querySelectorAll('.product-card');
+
+    searchInput.addEventListener('input', function () {
+        const query = this.value.toLowerCase().trim();
+
+        productCards.forEach(card => {
+            const title = card.querySelector('.product-title').textContent.toLowerCase();
+            
+            @*basically if it's in the search-input, it'll check if the query letters can be found in product-title*@
+            if (title.includes(query)) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+</script>
