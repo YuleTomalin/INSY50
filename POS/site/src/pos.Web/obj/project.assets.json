@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
     "net10.0": {
       "pos.Core/1.0.0": {
@@ -27,39 +27,33 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\simpi\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "/Users/sunlifehd/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\simpi\\Documents\\GitHub\\INSY50\\POS\\site\\src\\pos.Web\\pos.Web.csproj",
+      "projectUniqueName": "/Users/sunlifehd/Documents/INSY50/POS/site/src/pos.Web/pos.Web.csproj",
       "projectName": "pos.Web",
-      "projectPath": "C:\\Users\\simpi\\Documents\\GitHub\\INSY50\\POS\\site\\src\\pos.Web\\pos.Web.csproj",
-      "packagesPath": "C:\\Users\\simpi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\simpi\\Documents\\GitHub\\INSY50\\POS\\site\\src\\pos.Web\\obj\\",
+      "projectPath": "/Users/sunlifehd/Documents/INSY50/POS/site/src/pos.Web/pos.Web.csproj",
+      "packagesPath": "/Users/sunlifehd/.nuget/packages/",
+      "outputPath": "/Users/sunlifehd/Documents/INSY50/POS/site/src/pos.Web/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\simpi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/sunlifehd/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\simpi\\Documents\\GitHub\\INSY50\\POS\\site\\src\\pos.Core\\pos.Core.csproj": {
-              "projectPath": "C:\\Users\\simpi\\Documents\\GitHub\\INSY50\\POS\\site\\src\\pos.Core\\pos.Core.csproj"
+            "/Users/sunlifehd/Documents/INSY50/POS/site/src/pos.Core/pos.Core.csproj": {
+              "projectPath": "/Users/sunlifehd/Documents/INSY50/POS/site/src/pos.Core/pos.Core.csproj"
             }
           }
         }
@@ -74,10 +68,11 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.200"
+      "SdkAnalysisLevel": "10.0.400"
     },
     "frameworks": {
       "net10.0": {
+        "framework": "net10.0",
         "targetAlias": "net10.0",
         "imports": [
           "net461",
@@ -98,7 +93,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.402/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
