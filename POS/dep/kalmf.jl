@@ -1,5 +1,5 @@
 """
-    Written by:satoshi
+    Written by: yuto
     Created At: 2026年(令和8)10月12日
     Description: Main algorithm of GAIA, the Kalman Filter. This filter singles out needed data and 
 """
