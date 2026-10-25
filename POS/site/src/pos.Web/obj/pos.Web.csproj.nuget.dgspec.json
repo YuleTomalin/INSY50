@@ -1,30 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "/Users/sunlifehd/Documents/INSY50/POS/site/src/pos.Web/pos.Web.csproj": {}
+    "C:\\Users\\simpi\\Documents\\GitHub\\INSY50\\POS\\site\\src\\pos.Web\\pos.Web.csproj": {}
   },
   "projects": {
-    "/Users/sunlifehd/Documents/INSY50/POS/site/src/pos.Core/pos.Core.csproj": {
+    "C:\\Users\\simpi\\Documents\\GitHub\\INSY50\\POS\\site\\src\\pos.Core\\pos.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/sunlifehd/Documents/INSY50/POS/site/src/pos.Core/pos.Core.csproj",
+        "projectUniqueName": "C:\\Users\\simpi\\Documents\\GitHub\\INSY50\\POS\\site\\src\\pos.Core\\pos.Core.csproj",
         "projectName": "pos.Core",
-        "projectPath": "/Users/sunlifehd/Documents/INSY50/POS/site/src/pos.Core/pos.Core.csproj",
-        "packagesPath": "/Users/sunlifehd/.nuget/packages/",
-        "outputPath": "/Users/sunlifehd/Documents/INSY50/POS/site/src/pos.Core/obj/",
+        "projectPath": "C:\\Users\\simpi\\Documents\\GitHub\\INSY50\\POS\\site\\src\\pos.Core\\pos.Core.csproj",
+        "packagesPath": "C:\\Users\\simpi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\simpi\\Documents\\GitHub\\INSY50\\POS\\site\\src\\pos.Core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/sunlifehd/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\simpi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net10.0": {
-            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -39,11 +44,10 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.400"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net10.0": {
-          "framework": "net10.0",
           "targetAlias": "net10.0",
           "imports": [
             "net461",
@@ -61,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.402/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -339,31 +343,36 @@
         }
       }
     },
-    "/Users/sunlifehd/Documents/INSY50/POS/site/src/pos.Web/pos.Web.csproj": {
+    "C:\\Users\\simpi\\Documents\\GitHub\\INSY50\\POS\\site\\src\\pos.Web\\pos.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/sunlifehd/Documents/INSY50/POS/site/src/pos.Web/pos.Web.csproj",
+        "projectUniqueName": "C:\\Users\\simpi\\Documents\\GitHub\\INSY50\\POS\\site\\src\\pos.Web\\pos.Web.csproj",
         "projectName": "pos.Web",
-        "projectPath": "/Users/sunlifehd/Documents/INSY50/POS/site/src/pos.Web/pos.Web.csproj",
-        "packagesPath": "/Users/sunlifehd/.nuget/packages/",
-        "outputPath": "/Users/sunlifehd/Documents/INSY50/POS/site/src/pos.Web/obj/",
+        "projectPath": "C:\\Users\\simpi\\Documents\\GitHub\\INSY50\\POS\\site\\src\\pos.Web\\pos.Web.csproj",
+        "packagesPath": "C:\\Users\\simpi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\simpi\\Documents\\GitHub\\INSY50\\POS\\site\\src\\pos.Web\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/sunlifehd/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\simpi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net10.0": {
-            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "/Users/sunlifehd/Documents/INSY50/POS/site/src/pos.Core/pos.Core.csproj": {
-                "projectPath": "/Users/sunlifehd/Documents/INSY50/POS/site/src/pos.Core/pos.Core.csproj"
+              "C:\\Users\\simpi\\Documents\\GitHub\\INSY50\\POS\\site\\src\\pos.Core\\pos.Core.csproj": {
+                "projectPath": "C:\\Users\\simpi\\Documents\\GitHub\\INSY50\\POS\\site\\src\\pos.Core\\pos.Core.csproj"
               }
             }
           }
@@ -378,11 +387,10 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.400"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net10.0": {
-          "framework": "net10.0",
           "targetAlias": "net10.0",
           "imports": [
             "net461",
@@ -403,7 +411,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.402/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

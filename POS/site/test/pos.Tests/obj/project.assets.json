@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 3,
   "targets": {
     "net10.0": {
       "coverlet.collector/6.0.4": {
@@ -914,29 +914,35 @@
     ]
   },
   "packageFolders": {
-    "/Users/sunlifehd/.nuget/packages/": {}
+    "C:\\Users\\simpi\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/sunlifehd/Documents/INSY50/POS/site/test/pos.Tests/pos.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\simpi\\Documents\\GitHub\\INSY50\\POS\\site\\test\\pos.Tests\\pos.Tests.csproj",
       "projectName": "pos.Tests",
-      "projectPath": "/Users/sunlifehd/Documents/INSY50/POS/site/test/pos.Tests/pos.Tests.csproj",
-      "packagesPath": "/Users/sunlifehd/.nuget/packages/",
-      "outputPath": "/Users/sunlifehd/Documents/INSY50/POS/site/test/pos.Tests/obj/",
+      "projectPath": "C:\\Users\\simpi\\Documents\\GitHub\\INSY50\\POS\\site\\test\\pos.Tests\\pos.Tests.csproj",
+      "packagesPath": "C:\\Users\\simpi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\simpi\\Documents\\GitHub\\INSY50\\POS\\site\\test\\pos.Tests\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/Users/sunlifehd/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\simpi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net10.0": {
-          "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {}
         }
@@ -951,11 +957,10 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.400"
+      "SdkAnalysisLevel": "10.0.200"
     },
     "frameworks": {
       "net10.0": {
-        "framework": "net10.0",
         "targetAlias": "net10.0",
         "dependencies": {
           "Microsoft.NET.Test.Sdk": {
@@ -991,7 +996,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.402/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
