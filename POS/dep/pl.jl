@@ -1,7 +1,7 @@
 """
     Written by: yuto
     Created At: 2026年(令和8)10月12日
-    Description: This file is the main plotting file for GAIA.
+    Description: This file is the main plotting file for GAIA. It outputs the ...
 """
 
 module plMod
@@ -29,7 +29,7 @@ using .mainModule
 
 #TODO:  fix where peaks are marked (both positive and negative peaks)
 #       replace with customisable options [1-Wk Trans, 2-Wk Trans, 1-Month, 3-Months] (Connect to Dashboard l8r)
-#       output to pdf once site is running (output -> res/)
+#       Add plot for Desynchronization
 
 """
     plotStdInnov(AbstractDataFrame, Float64, String, Bool, String)
@@ -71,6 +71,16 @@ function plotStdInnov(steps::Vector{Int64}, standardized_innovation::Vector{Floa
         gui()
         readline()
     end
+end
+
+"""
+    plotDesync()
+    ...
+
+    ...
+"""
+function plotDesync()
+
 end
 
 plotStdInnov(getSteps(df), std_innov, "Transaction Steps (Jun, 2026 - Oct, 2026), 30 to 70 transactions @ specific dates", true, __DirPDF)
