@@ -21,8 +21,6 @@ measurements::Vector{Float64} = zeros(1) # zₜ
 deleteat!(measurements, 1)
 estimates = Float64[] # xₜ
 std_innov = Float64[2001]
-#threshold = 3.0
-#anomalies = abs.(std_innov) .> threshold
 
 df = getCSV(dir, DataFrame)
 C_df = getClientTime(df)

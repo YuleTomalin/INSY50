@@ -10,14 +10,15 @@ module fhMod
 using CSV, DataFrames, Dates, Parsers
 
 # Functions
-export getClientTime, getServerTime, getCSV, dir, std_innov, getSteps
+export getClientTime, getServerTime, getCSV, dir, std_innov, getSteps, getClientTime, getServerState
 
 # Includes
 
 
 #==========#
 
-# TODO: automated folder finding and csv or zip
+# TODO: [ADMIN PAGE] ask admin what to name CSV files
+#     : automated folder finding and csv or zip
 
 filename::String = "transactions_2000.csv"
 __InpCSVDIR = joinpath(@__DIR__, "..", "res/")
@@ -62,7 +63,27 @@ function getServerTime(df::DataFrame) # in SS.sss
 end
 
 """
-    getCSV(String, sink[Tables.jl])
+    getClientState(DataFrame)
+    ...
+    ...
+"""
+function getClientState(df::DataFrame)
+    cStateT::Vector{Bool} = df[:, 7]
+    return cStateT
+end
+
+"""
+    getServerState(DataFrame)
+    ...
+    ...
+"""
+function getServerState(df::DataFrame)
+    sStateT::Vector{Bool} = df[:, 8]
+    return sStateT
+end
+
+"""
+    getCSV(String, sink [Tables.jl])
     ...
     Get the CSV file from a predetermined directory. 
     "sink" is a Tables.jl object, in this case DataFrame.
