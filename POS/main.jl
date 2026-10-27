@@ -1,7 +1,12 @@
 """
     Written by:satoshi
     Created At: 2026年(令和8)10月9日
-    Description: This is the main file for everything related to the POS, GAIA.
+    Description: This is the main file for everything related to GAIA. In-code information could be found here.
+
+    1) General syntax for CSV:
+        ID,TransTotAmt,ClientTransTime,ServerTransTime,Date,Step,ClientDone,ServerDone
+
+    2) ADD MORE L8R
 """
 
 # MAIN FILE
