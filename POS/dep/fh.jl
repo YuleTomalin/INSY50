@@ -10,7 +10,7 @@ module fhMod
 using CSV, DataFrames, Dates, Parsers
 
 # Functions
-export getClientTime, getServerTime, getCSV, dir, std_innov, getSteps, getClientTime, getServerState
+export getClientTime, getServerTime, getCSV, dir, std_innov, getSteps, getClientState, getServerState
 
 # Includes
 
@@ -65,6 +65,9 @@ end
 """
     getClientState(DataFrame)
     ...
+    Given the DataFrame of the CSV, get the seventh column (i.e. ClientState)
+    at transaction step Step. 
+    Return a boolean vector cStateT.
     ...
 """
 function getClientState(df::DataFrame)
@@ -75,6 +78,9 @@ end
 """
     getServerState(DataFrame)
     ...
+    Given the DataFrame of the CSV, get the eighth column (i.e. ServerState)
+    at transaction step Step.
+    Return a boolean vector sStateT.
     ...
 """
 function getServerState(df::DataFrame)
