@@ -4,9 +4,7 @@
 
 - [x] Client-friendly dashboard for easy integration from common POS systems
 - [x] Latency identifier on Admin Dashboard to evaluate system degredation
-
-**BUILDING THE SOFTWARE FROM SCRATCH (Only way)**
-
+- [x] Output interpretable plots
 
 **NOTICE**
 

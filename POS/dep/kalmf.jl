@@ -46,11 +46,6 @@ let mu = measurement_update(
     R
 )
 
-
-# DO NOT UNCOMMENT, DEBUGGING PURPOSES ONLY
-#println(@which measurement_update(x_init,p_init,measurements[1],H,R))
-
-
 push!(estimates, get_state(mu)[1])
 
 for z ∈ measurements[2:end]
