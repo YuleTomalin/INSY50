@@ -4,8 +4,6 @@
     Description: Desynchronization checker for GAIA. Given the client state and server state at a transaction step.
 """
 
-
-
 module desMod
 
 # Using
@@ -79,10 +77,4 @@ function sdi(ClientState::Bool, ServerState::Bool)
     end
 end
 
-#= ##Tests 
-@printf("%d\n", sdi(true, true))
-@printf("%d\n", sdi(true, false))
-@printf("%d\n", sdi(false, true))
-@printf("%d\n", sdi(false, false))
-=#
 end

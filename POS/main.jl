@@ -6,7 +6,7 @@
     1) General syntax for CSV:
         ID,TransTotAmt,ClientTransTime,ServerTransTime,Date,Step,ClientDone,ServerDone
 
-    2) ADD MORE L8R
+    2) General idea and definition of terms
 """
 
 # MAIN FILE

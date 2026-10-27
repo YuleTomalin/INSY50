@@ -5,15 +5,6 @@
 - [x] Client-friendly dashboard for easy integration from common POS systems
 - [x] Latency identifier on Admin Dashboard to evaluate system degredation
 
-**TODO:**
-
-- [x] Plotting {pl.jl} (NEEDS REVISION)
-- [ ] Build POS WebSystem Main Page
-- [ ] POS WebSystem Admin Page and Dashboard
-- [ ] Implement Admin Dashboard w/ plotting capabilities
-- [ ] Database implementation (models only, no need for local sql servers)
-- [ ] Frontpage for showcasing product. But no login yet
-
 **BUILDING THE SOFTWARE FROM SCRATCH (Only way)**
 
 
