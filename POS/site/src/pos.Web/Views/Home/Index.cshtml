@@ -10,6 +10,8 @@
         public string Name { get; set; } = "";
         public decimal Price { get; set; }
         public string ImageUrl { get; set; } = "";
+
+        public string Category { get; set; } = "";
     }
 }
 
@@ -19,14 +21,14 @@
     // sample products
     var products = new List<Product>
     {
-        new Product {Name = "Big Burger ni Aldrin", Price = 125, ImageUrl = "/images/burgernialdrin.png" },
-        new Product {Name = "Yummy Hotdog ni Yule", Price = 115, ImageUrl = "/images/hotdog.png" },
-        new Product {Name = "Medium Fries", Price = 65, ImageUrl = "/images/fries.png" },
-        new Product {Name = "6 pc. Crispy Nigglets", Price = 10, ImageUrl = "/images/nuggets.png" },
-        new Product {Name = "Cocaine (1KG)", Price = 15000, ImageUrl = "/images/coke.png" },
-        new Product {Name = "Strawblueberry Juice", Price = 85, ImageUrl = "/images/juice.png" },
-        new Product {Name = "Ang BLACK ni Bluejay", Price = 200000, ImageUrl = "/images/black.png" },
-        new Product {Name = "Pancake", Price = 140, ImageUrl = "/images/pancake.png" },
+        new Product {Name = "Big Burger ni Aldrin", Price = 125, ImageUrl = "/images/burgernialdrin.png", Category = "Burger" },
+        new Product {Name = "Yummy Hotdog ni Yule", Price = 115, ImageUrl = "/images/hotdog.png", Category = "Burger" },
+        new Product {Name = "Medium Fries", Price = 65, ImageUrl = "/images/fries.png", Category = "Add-ons" },
+        new Product {Name = "6 pc. Crispy Nigglets", Price = 10, ImageUrl = "/images/nuggets.png", Category = "Chicken" },
+        new Product {Name = "Cocaine (1KG)", Price = 15000, ImageUrl = "/images/coke.png", Category = "Desserts" },
+        new Product {Name = "Strawblueberry Juice", Price = 85, ImageUrl = "/images/juice.png", Category = "Drinks" },
+        new Product {Name = "Ang BLACK ni Bluejay", Price = 200000, ImageUrl = "/images/black.png", Category = "Desserts" },
+        new Product {Name = "Pancake", Price = 140, ImageUrl = "/images/pancake.png", Category = "Desserts" },
         /*you should be able to add one here with the similar format as above, 
         this is just temporary though since we the info/products for this later on the supposed DB.
         
@@ -34,16 +36,51 @@
     };
 }
 
-@*3 containers*@
-<div class="flex h-[calc(100vh-4rem)] w-full gap-3 p-3 bg-gray-100 overflow-hidden box-border">
+@* 3 containers: removed min-w-[1024px] *@
+<div class="flex h-[calc(100vh-4rem)] w-full min-w-0 gap-3 p-3 bg-gray-100 overflow-hidden box-border">
 
-    @*supposed sidebar (not yet developed)*@
-    <aside class="w-48 bg-white border border-gray-300 rounded-lg p-3 flex flex-col gap-2 overflow-y-auto">
-        @*empty empty empty*@
+    @* Sidebar: Uses xl: instead of lg: so it collapses more readily *@
+    <aside class="w-16 xl:w-44 flex-shrink-0 bg-white border border-gray-300 rounded-xl p-2 flex flex-col gap-2 overflow-y-auto transition-all duration-200">
+        
+        <button class="category-btn w-full py-2.5 px-2 flex items-center justify-center xl:justify-start gap-3 font-bold text-gray-800 bg-gray-200 rounded-lg transition hover:bg-gray-300" data-filter="all" title="All Items">
+            <span class="text-lg">🍽️</span>
+            <span class="hidden xl:inline text-sm">All Items</span>
+        </button>
+
+        <button class="category-btn w-full py-2.5 px-2 flex items-center justify-center xl:justify-start gap-3 font-semibold text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 transition active:scale-95" data-filter="chicken" title="Chicken">
+            <span class="text-lg">🍗</span>
+            <span class="hidden xl:inline text-sm">Chicken</span>
+        </button>
+
+        <button class="category-btn w-full py-2.5 px-2 flex items-center justify-center xl:justify-start gap-3 font-semibold text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 transition active:scale-95" data-filter="burger" title="Burgers">
+            <span class="text-lg">🍔</span>
+            <span class="hidden xl:inline text-sm">Burger</span>
+        </button>
+
+        <button class="category-btn w-full py-2.5 px-2 flex items-center justify-center xl:justify-start gap-3 font-semibold text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 transition active:scale-95" data-filter="drinks" title="Drinks">
+            <span class="text-lg">🥤</span>
+            <span class="hidden xl:inline text-sm">Drinks</span>
+        </button>
+
+        <button class="category-btn w-full py-2.5 px-2 flex items-center justify-center xl:justify-start gap-3 font-semibold text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 transition active:scale-95" data-filter="rice" title="Rice Meal">
+            <span class="text-lg">🍚</span>
+            <span class="hidden xl:inline text-sm">Rice Meals</span>
+        </button>
+
+        <button class="category-btn w-full py-2.5 px-2 flex items-center justify-center xl:justify-start gap-3 font-semibold text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 transition active:scale-95" data-filter="desserts" title="Desserts">
+            <span class="text-lg">🍰</span>
+            <span class="hidden xl:inline text-sm">Desserts</span>
+        </button>
+
+        <button class="category-btn w-full py-2.5 px-2 flex items-center justify-center lg:justify-start gap-3 font-semibold text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 transition active:scale-95" data-filter="add-ons" title="Add-ons">
+            <span class="text-lg">🧂</span>
+            <span class="hidden xl:inline text-sm">Add-ons</span>
+        </button>
+
     </aside>
 
 @*main products container/section*@
-<section class="flex-1 bg-white border border-gray-300 rounded-xl p-4 flex flex-col h-full overflow-hidden">
+<section class="flex-1 min-w-0 bg-white border border-gray-300 rounded-xl p-4 flex flex-col h-full overflow-hidden">
     
     @*search bar*@
     <div class="mb-4 flex-none">
@@ -55,85 +92,309 @@
             </span>
             @*input here*@
             <input type="text"
-                id="search-input"
-                placeholder="Search menu items here, greetings from Teto btw..."
-                class="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:bg-white transition" />
+                   id="search-input"
+                   placeholder="Search menu items... greetings from Von btw"
+                   class="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:bg-white transition" />
         </div>
     </div>
 
     @*product grid container*@ 
-    <div class="grid grid-cols-3 gap-3 overflow-y-auto flex-1 content-start auto-rows-max pr-1">
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(130px,1fr))] gap-3 overflow-y-auto flex-1 content-start auto-rows-max pr-1">
         @*c# spotted around here*@
         @foreach (var item in products)
         {
-            <div class="product-card border border-gray-200 rounded-xl p-3 flex flex-col items-center justify-between text-center bg-gray-100 hover:border-gray-400 hover:shadow-sm cursor-pointer transition h-44 select-none">
+        @*start of the product card*@
+        <div class="product-card border border-gray-200 rounded-xl p-3 flex flex-col items-center justify-between text-center bg-white hover:border-gray-400 hover:shadow-sm cursor-pointer transition h-44 select-none active:scale-95"
+             data-category="@item.Category"
+             data-name="@item.Name"
+             data-price="@item.Price">
                 
-                @*imges*@
-                <div class="h-28 w-full bg-gray-50 rounded-lg overflow-hidden">
-                    <img src="@item.ImageUrl" 
-                        alt="@item.Name" 
-                        class="h-full w-full object-cover" />
-                </div>
-
-                @*name & price*@
-                <div class="w-full">
-                    <h4 class="product-title font-semibold text-gray-800 text-xs truncate" title="@item.Name">
-                        @item.Name
-                    </h4>
-                    <p class="text-xs font-bold text-gray-600 mt-0.5">
-                        ₱@item.Price.ToString("0.00")
-                    </p>
-                </div>
-
+            @*imgs*@
+            <div class="h-24 w-full flex items-center justify-center bg-gray-50 rounded-lg overflow-hidden p-1">
+                <img src="@item.ImageUrl" alt="@item.Name" class="max-h-full max-w-full object-contain" />
             </div>
+
+            @*name and price*@
+            <div class="w-full">
+                <h4 class="product-title font-semibold text-gray-800 text-xs truncate" title="@item.Name">
+                    @item.Name
+                </h4>
+                <p class="text-xs font-bold text-gray-600 mt-0.5">
+                    ₱@item.Price.ToString("0.00")
+                </p>
+            </div>
+        </div>
         }
     </div>
 
 </section>
 
     @*supposed order info*@
-    <aside class="w-80 bg-white border border-gray-300 rounded-lg p-4 flex flex-col justify-between overflow-hidden">
+    <aside class="w-72 lg:w-80 flex-shrink-0 bg-white border border-gray-300 rounded-xl p-4 flex flex-col justify-between overflow-hidden">
         
         @*still not yet done, but this is already alloted for when the func. is done*@
         <div class="flex-1 flex flex-col overflow-hidden">
+            <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                <h3 class="font-bold text-base text-gray-800">Order List</h3>
+                <span class="text-xs bg-gray-100 text-gray-600 font-semibold px-2 py-0.5 rounded">Order #00001</span>
+            </div>
             
             @*for the added items*@
-            <div class="flex-1 overflow-y-auto my-2">
-                @*blank blank blank*@
+            <div id="cart-container" class="flex-1 overflow-y-auto my-2 divide-y divide-gray-100 pr-1">
+                @*blank blank blank - dynamically filled by javascript below*@
+                <div id="empty-cart-msg" class="text-xs text-gray-400 text-center py-8">
+                    No items selected yet. Tap products to add.
+                </div>
             </div>
 
             @*totals*@
-            <div class="border-t border-gray-200 pt-3">
-                @*blank blank blank*@
+            <div class="border-t border-gray-200 pt-3 text-xs space-y-1.5 text-gray-600">
+                <div class="flex justify-between">
+                    <span>Subtotal</span>
+                    <span id="subtotal-val" class="font-medium text-gray-800">₱0.00</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>VAT (12%)</span>
+                    <span id="vat-val" class="font-medium text-gray-800">₱0.00</span>
+                </div>
+                <div class="flex justify-between font-bold text-sm text-gray-900 border-t border-gray-100 pt-1.5 mt-1">
+                    <span>Total</span>
+                    <span id="total-val" class="text-base text-emerald-600">₱0.00</span>
+                </div>
             </div>
         </div>
 
         @*supposed pay button*@
         <div class="border-t border-gray-200 pt-3 flex flex-col gap-2">
-            @*blank blank blank*@
+            <div class="flex gap-2">
+                <button id="clear-order-btn" class="w-full py-1.5 text-xs font-semibold text-red-600 border border-red-200 rounded-lg hover:bg-red-50 transition active:scale-95">
+                    Clear Order
+                </button>
+            </div>
+
+            <button id="proceed-to-payment-btn" class="w-full py-3 bg-amber-400 hover:bg-amber-500 text-gray-900 font-bold text-sm rounded-lg shadow-sm flex items-center justify-center gap-2 active:scale-95 transition">
+                <span>💳</span> Proceed to Payment
+            </button>
+
         </div>
 
     </aside>
 
+@*Payment screen*@
+<div id="payment-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-sm p-6 flex flex-col gap-4">
+        <div class="flex justify-between items-center border-b pb-3">
+            <h3 class="font-bold text-lg text-gray-800">Checkout</h3>
+            <button id="close-modal-btn" class="text-gray-400 hover:text-gray-600 text-lg">✕</button>
+        </div>
+
+        <div>
+            <div class="text-xs text-gray-400">Total Amount Due</div>
+            <div id="modal-total-due" class="text-2xl font-bold text-emerald-600">₱0.00</div>
+        </div>
+
+        <div>
+            <label class="text-xs font-semibold text-gray-600 mb-2 block">Select Payment Method</label>
+                <div class="grid grid-cols-2 gap-3">
+                    @*cash*@
+                    <button type="button" 
+                        id="modal-pay-cash"
+                        data-method="cash"
+                        class="modal-method-btn flex flex-col items-center justify-center gap-1.5 p-3 rounded-xl border-2 border-emerald-500 bg-emerald-50 font-bold text-xs text-emerald-800 transition active:scale-95">
+                    <span class="text-2xl">💵</span>
+                    <span>Cash</span>
+                    </button>
+
+                    @*card*@
+                    <button type="button" 
+                        id="modal-pay-card"
+                        data-method="card"
+                        class="modal-method-btn flex flex-col items-center justify-center gap-1.5 p-3 rounded-xl border border-gray-200 hover:bg-gray-50 font-semibold text-xs text-gray-700 transition active:scale-95">
+                    <span class="text-2xl">💳</span>
+                    <span>Card / E-Wallet</span>
+                    </button>
+                </div>
+        </div>
+
+        <button id="finalize-payment-btn" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-sm transition active:scale-95 shadow-sm">
+            Complete Order
+        </button>
+    </div>
 </div>
 
-@*the search func, on js*@
+</div>
+
+@*the search func (now with the category filter), on js*@
 <script>
     const searchInput = document.getElementById('search-input');
     const productCards = document.querySelectorAll('.product-card');
+    const categoryButtons = document.querySelectorAll('.category-btn');
 
-    searchInput.addEventListener('input', function () {
-        const query = this.value.toLowerCase().trim();
+    let currentCategory = 'all';
+
+    function filterProducts() {
+        const query = searchInput.value.toLowerCase().trim();
 
         productCards.forEach(card => {
             const title = card.querySelector('.product-title').textContent.toLowerCase();
-            
-            @*basically if it's in the search-input, it'll check if the query letters can be found in product-title*@
-            if (title.includes(query)) {
-                card.style.display = '';
+            const cardCategory = (card.dataset.category || '').toLowerCase();
+
+            const matchesCategory = (currentCategory === 'all' || cardCategory === currentCategory);
+            const matchesSearch = title.includes(query);
+
+            if (matchesCategory && matchesSearch) {
+                card.style.display = 'flex';
             } else {
                 card.style.display = 'none';
             }
         });
+    }
+
+    // categ. button event
+    categoryButtons.forEach(btn => {
+        btn.addEventListener('click', function () {
+            categoryButtons.forEach(b => {
+                b.classList.remove('bg-gray-200', 'font-bold');
+                b.classList.add('bg-white');
+            });
+            this.classList.add('bg-gray-200', 'font-bold');
+            this.classList.remove('bg-white');
+
+            currentCategory = this.dataset.filter.toLowerCase();
+            filterProducts();
+        });
     });
+
+    // search
+    searchInput.addEventListener('input', filterProducts);
+
+    // Cart Management & Calculations
+    let cart = [];
+
+    const cartContainer = document.getElementById('cart-container');
+    const subtotalEl = document.getElementById('subtotal-val');
+    const vatEl = document.getElementById('vat-val');
+    const totalEl = document.getElementById('total-val');
+    const clearBtn = document.getElementById('clear-order-btn');
+
+    productCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const name = card.dataset.name;
+            const price = parseFloat(card.dataset.price);
+
+            const existingItem = cart.find(i => i.name === name);
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({ name, price, qty: 1 });
+            }
+            renderCart();
+        });
+    });
+
+    function updateQty(name, delta) {
+        const item = cart.find(i => i.name === name);
+        if (!item) return;
+
+        item.qty += delta;
+        if (item.qty <= 0) {
+            cart = cart.filter(i => i.name !== name);
+        }
+        renderCart();
+    }
+
+    function renderCart() {
+        if (cart.length === 0) {
+            cartContainer.innerHTML = '<div class="text-xs text-gray-400 text-center py-8">No items selected yet. Tap products to add.</div>';
+            subtotalEl.textContent = '₱0.00';
+            vatEl.textContent = '₱0.00';
+            totalEl.textContent = '₱0.00';
+            return;
+        }
+
+        let html = '';
+        let subtotal = 0;
+
+        cart.forEach(item => {
+            const itemTotal = item.price * item.qty;
+            subtotal += itemTotal;
+
+            html += `
+                <div class="py-2 flex items-center justify-between text-xs">
+                    <div class="flex-1 pr-2">
+                        <div class="font-semibold text-gray-800 truncate">${item.name}</div>
+                        <div class="text-gray-400">₱${item.price.toFixed(2)}</div>
+                    </div>
+                    <div class="flex items-center gap-1.5 border border-gray-200 rounded px-1 py-0.5">
+                        <button onclick="updateQty('${item.name}', -1)" class="w-4 h-4 text-gray-500 hover:text-black font-bold flex items-center justify-center">-</button>
+                        <span class="w-4 text-center font-bold text-gray-700">${item.qty}</span>
+                        <button onclick="updateQty('${item.name}', 1)" class="w-4 h-4 text-gray-500 hover:text-black font-bold flex items-center justify-center">+</button>
+                    </div>
+                    <div class="w-14 text-right font-semibold text-gray-800 ml-2">
+                        ₱${itemTotal.toFixed(2)}
+                    </div>
+                </div>
+            `;
+        });
+
+        cartContainer.innerHTML = html;
+
+        const vat = subtotal * 0.12;
+        const total = subtotal + vat;
+
+        subtotalEl.textContent = `₱${subtotal.toFixed(2)}`;
+        vatEl.textContent = `₱${vat.toFixed(2)}`;
+        totalEl.textContent = `₱${total.toFixed(2)}`;
+    }
+
+    clearBtn.addEventListener('click', () => {
+        cart = [];
+        renderCart();
+    });
+
+const paymentModal = document.getElementById('payment-modal');
+const modalTotalDue = document.getElementById('modal-total-due');
+const closeModalBtn = document.getElementById('close-modal-btn');
+const proceedPayBtn = document.getElementById('proceed-to-payment-btn');
+
+proceedPayBtn.addEventListener('click', () => {
+    if (cart.length === 0) {
+        alert("Cart is empty!");
+        return;
+    }
+    modalTotalDue.textContent = totalEl.textContent;
+    paymentModal.classList.remove('hidden');
+});
+
+closeModalBtn.addEventListener('click', () => {
+    paymentModal.classList.add('hidden');
+});
+
+// Payment method
+let selectedPaymentMethod = 'cash';
+const modalMethodButtons = document.querySelectorAll('.modal-method-btn');
+
+modalMethodButtons.forEach(btn => {
+    btn.addEventListener('click', function () {
+        selectedPaymentMethod = this.dataset.method;
+
+        modalMethodButtons.forEach(b => {
+            // reset unselected button
+            b.className = "modal-method-btn flex flex-col items-center justify-center gap-1.5 p-3 rounded-xl border border-gray-200 hover:bg-gray-50 font-semibold text-xs text-gray-700 transition active:scale-95";
+        });
+
+        // clicked/selected button
+        this.className = "modal-method-btn flex flex-col items-center justify-center gap-1.5 p-3 rounded-xl border-2 border-emerald-500 bg-emerald-50 font-bold text-xs text-emerald-800 transition active:scale-95";
+    });
+});
+
+// Complete Order
+document.getElementById('finalize-payment-btn').addEventListener('click', () => {
+    alert(`Order completed successfully via ${selectedPaymentMethod}! No way bro actually paid for nothing :D`);
+    
+    // Clear cart
+    cart = [];
+    renderCart();
+    paymentModal.classList.add('hidden');
+});
 </script>
