@@ -25,7 +25,7 @@ using .kfMod
 →(p::Bool, q::Bool) = !p || q
 ⟹(p::Bool, q::Bool) = !p || q
 
-#TODO: Do this later. Once finished, PUSH dev -> main or main <- dev
+#TODO: Connect input data from fh.jl to here (to cState and sState)
 #      @ fh.jl, add new getClientState and getServerState. Add two new cols [7 & 8] on CSV (ClientDone & ServerDone)
 
 cState::Vector{Bool} = zeros(1) # client state at time t, outputs 1 or 0
@@ -34,8 +34,9 @@ sState::Vector{Bool} = zeros(1) # server state at time t, outputs 1 or 0
 deleteat!(cState, 1)
 deleteat!(sState, 1)
 
-#push!(cState, getClientState(df))
-#push!(sState, getServerState(df))
+## FIX L8R
+#cState = getClientState()
+#sState = getServerState()
 
 """
     sdi(Boolean, Boolean)

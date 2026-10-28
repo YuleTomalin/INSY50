@@ -93,3 +93,5 @@ bin/
 obj/
 
 *.DS_Store
+
+tests/

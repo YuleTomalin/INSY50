@@ -4,7 +4,7 @@
 
 - [x] Client-friendly dashboard for easy integration from common POS systems
 - [x] Latency identifier on Admin Dashboard to evaluate system degredation
-- [x] Output interpretable plots
+- [x] Outputs visual and interpretable plots for systems analysis
 
 **NOTICE**
 

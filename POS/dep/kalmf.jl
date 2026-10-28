@@ -17,8 +17,7 @@ export df, std_innov
 
 #==========#
 
-measurements::Vector{Float64} = zeros(1) # zₜ
-deleteat!(measurements, 1)
+measurements = Float64[] # zₜ
 estimates = Float64[] # xₜ
 std_innov = Float64[2001]
 
@@ -30,12 +29,12 @@ for i in 1:size(C_df, 1) # using ClientTime dataframe as guide
 end
 
 # MAIN DEFINITIONS (ARBITRARY DATA, NEEDS TO BE A SCALAR AND NOT A VECTOR)
-F = 1.0         # state-transaction matrix (1x1); F = [1] since no changes in state
-H = 1.0         # measurement matrix (1x1) ; H = [1] since there is a direct measurement of the state
-Q = 0.1         # var(q)
-R = 0.5        # var(w) or var(measurements)
-x_init = 1.0   # init est
-p_init = 1.0    # init cov(xₜ₋₁)
+F::Float32 = 1.0         # state-transaction matrix (1x1); F = [1] since no changes in state
+H::Float32 = 1.0         # measurement matrix (1x1) ; H = [1] since there is a direct measurement of the state
+Q::Float32 = 0.1         # var(q)
+R::Float32 = 0.5        # var(w) or var(measurements)
+x_init::Float32 = 1.0   # init est
+p_init::Float32 = 1.0    # init cov(xₜ₋₁)
 
 
 let mu = measurement_update(

@@ -11,13 +11,14 @@ using Plots, Measures, LaTeXStrings, Peaks, DataFrames
 # Includes
 include("fh.jl")
 include("kalmf.jl")
-include("../main.jl")
+include("dsync.jl")
 
 # Functions
 using .fhMod
 using .kfMod
+using .desMod
 using .mainModule
-
+export plotStdInnov
 
 #==========#
 
@@ -27,9 +28,8 @@ using .mainModule
 #use the macro @. to wrap every proceeding function with .
 # common attributes: lc, lw, mc, ms, ma
 
-#TODO:  fix where peaks are marked (both positive and negative peaks)
+#TODO:  Add plot for Desynchronization
 #       replace with customisable options [1-Wk Trans, 2-Wk Trans, 1-Month, 3-Months] (Connect to Dashboard l8r)
-#       Add plot for Desynchronization
 
 """
     plotStdInnov(AbstractDataFrame, Float64, String, Bool, String)
@@ -40,7 +40,7 @@ using .mainModule
     directory where the PDF should go.
     ...
 """
-function plotStdInnov(steps::Vector{Int64}, standardized_innovation::Vector{Float64},  xlbl_main::String, toPdf::Bool, dirPdf::String)
+function plotStdInnov(steps::Vector{Int32}, standardized_innovation::Vector{Float64},  xlbl_main::String, toPdf::Bool, dirPdf::String)
     gr()
 
     max_innov, max_idx_innov = findmaxima(standardized_innovation)
@@ -79,7 +79,7 @@ end
 
     ...
 """
-function plotDesync(datapoints::Vector{Int8}, toPdf::Bool, dirPdf::String)
+function plotDesync(datapoints::Vector{Int32}, toPdf::Bool, dirPdf::String)
     ##TODO##
 end
 

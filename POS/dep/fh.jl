@@ -20,6 +20,11 @@ export getClientTime, getServerTime, getCSV, dir, std_innov, getSteps, getClient
 # TODO: [ADMIN PAGE] ask admin what to name CSV files
 #     : automated folder finding and csv or zip
 
+export __DirPDF
+__DirPDF = joinpath(@__DIR__, "../res/dataplot.pdf")
+
+
+
 filename::String = "transactions_2000.csv"
 __InpCSVDIR = joinpath(@__DIR__, "..", "res/")
 global dir = joinpath(__InpCSVDIR, filename)
@@ -104,11 +109,11 @@ end
 """
     getSteps(AbstractDataFrame)
     ...
-    Get the time steps from a transaction CSV record.
+    Get the time steps from a transaction CSV record. Outputs an Int32 vector.
     ...
 """
 function getSteps(df::DataFrame)
-    transstep = df[:, 6]
+    transstep::Vector{Int32} = df[:, 6]
     return transstep
 end
 
