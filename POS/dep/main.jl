@@ -6,7 +6,21 @@
     1) General syntax for CSV:
         ID,TransTotAmt,ClientTransTime,ServerTransTime,Date,Step,ClientDone,ServerDone
 
-    2) General idea and definition of terms
+    2) General idea and definition of terms:
+        GAIA uses a 1D Kalman Filter, this means it can only input 1D matrices and vectors of type [] and not [[]] or [][], as a way
+        to "clean" and in an essence, average-out, the data from noisy data. 
+        
+        Noise could be interpreted as ...
+
+        Another available plotting method is by the desynchronization, although it is preferably used with the Kalman'ed plot. 
+        Desynchronization in this system, is the degredation of the system during critical times and times where continuous 
+        processing of data is required.
+
+        innovation is the ...
+
+        The Standardized innovation is the uncertain innovation ...
+
+    3)
 """
 
 # MAIN FILE

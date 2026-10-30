@@ -4,6 +4,9 @@
     Description: This file is the main plotting file for GAIA. It outputs the ...
 """
 
+#TODO:  Add plot for Desynchronization
+#       replace with customisable options [1-Wk Trans, 2-Wk Trans, 1-Month, 3-Months] (Connect to Dashboard l8r)
+
 module plMod
 # Using
 using Plots, Measures, LaTeXStrings, Peaks, DataFrames
@@ -17,19 +20,9 @@ include("dsync.jl")
 using .fhMod
 using .kfMod
 using .desMod
-using .mainModule
 export plotStdInnov
 
 #==========#
-
-#display(plot(...))
-#savefig("name.png") or savefig(plot, "name.pdf")
-#png("name") or Plots.pdf(plot, "name")
-#use the macro @. to wrap every proceeding function with .
-# common attributes: lc, lw, mc, ms, ma
-
-#TODO:  Add plot for Desynchronization
-#       replace with customisable options [1-Wk Trans, 2-Wk Trans, 1-Month, 3-Months] (Connect to Dashboard l8r)
 
 """
     plotStdInnov(AbstractDataFrame, Float64, String, Bool, String)
@@ -47,13 +40,13 @@ function plotStdInnov(steps::Vector{Int32}, standardized_innovation::Vector{Floa
     min_innov, min_idx_innov = findminima(standardized_innovation)
 
     # Left plot
-    p_seq = plot(steps[2:end], standardized_innovation[2:end], label="Std Innov", xlabel=xlbl_main, ylabel="Value", lc=:red, alpha=0.8, lw=:0.7, ylims=(-30, 50))
+    p_seq = plot(steps[2:end], standardized_innovation[2:end], label="Std Innov", xlabel=xlbl_main, ylabel="Value", lc=:red, alpha=0.8, lw=:0.7, ylims=(-35, 50))
     scatter!([max_innov], [max_idx_innov], label="SI ±Peaks per Transaction", mc=:black, ma=1, ms=3)
     scatter!([min_innov], [min_idx_innov], legend_marker_shapesize=2,label="SI Min / Transaction", mc=:green,ma=1, ms=1)
-    hline!([2.97, -2.97], color=:black, ls=:dash, label="±2.97")
+    hline!([3.97, -3.97], color=:black, ls=:dash, label="±3.97")
 
     # Right plot
-    p_dens = density(standardized_innovation, label="Actual Distribution", xlabel="Value", ylabel="Density", lc=:red, fill=(0, 0.2, :red), xlims=(-15, 15))
+    p_dens = density(standardized_innovation, label="Actual Distribution", xlabel="Value", ylabel="Density", lc=:red, fill=(0, 0.2, :red), xlims=(-20, 20))
 
     # Normal Dist Overlay
     standard_normal(x) = exp(-x^2 / 2) / sqrt(2π)
@@ -76,13 +69,23 @@ end
 """
     plotDesync()
     ...
-
+    Plot the...
     ...
 """
-function plotDesync(datapoints::Vector{Int32}, toPdf::Bool, dirPdf::String)
-    ##TODO##
+function plotDesync(steps::Vector{Int32}, datapoints::Vector{Int32}, toPdf::Bool, dirPdf::String)
+    gr()
+
+    # plot code here
+
+    if toPdf == true
+        Plots.pdf(fpl, dirPdf)
+        println("PDF Export complete. Exported to: ", dirPdf)
+    else 
+        gui()
+        readline()
+    end
 end
 
-plotStdInnov(getSteps(df), std_innov, "Transaction Steps (Jun, 2026 - Oct, 2026), 30 to 70 transactions @ specific dates", true, __DirPDF)
+plotStdInnov(getSteps(df), std_innov, "Transaction Steps (Jun, 2026 - Oct, 2026), 30 to 70 transactions @ specific dates", true, __SDirPDF)
 
 end # module

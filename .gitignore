@@ -95,3 +95,5 @@ obj/
 *.DS_Store
 
 tests/
+
+data/

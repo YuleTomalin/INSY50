@@ -4,29 +4,35 @@
     Description: File handling file for GAIA.
 """
 
+# TODO: [ADMIN PAGE] ask admin what to name CSV files
+#     : automated zip extraction (Optional)
+#     : Find a way to automate finding of csv files
+#     : Test if all files work
+
 module fhMod
 
 # Using
-using CSV, DataFrames, Dates, Parsers
+using CSV, DataFrames, Dates, Parsers#, FilePathsBase
 
 # Functions
 export getClientTime, getServerTime, getCSV, dir, std_innov, getSteps, getClientState, getServerState
 
-# Includes
-
-
 #==========#
 
-# TODO: [ADMIN PAGE] ask admin what to name CSV files
-#     : automated folder finding and csv or zip
+export __SDirPDF
+__SDirPDF = joinpath(@__DIR__, "../res/dataplot.pdf")
 
-export __DirPDF
-__DirPDF = joinpath(@__DIR__, "../res/dataplot.pdf")
-
+export __DesDirPDF
+__DesDirPDF = joinpath(@__DIR__, "../res/sdiplot.pdf")
 
 
 filename::String = "transactions_2000.csv"
-__InpCSVDIR = joinpath(@__DIR__, "..", "res/")
+
+#if exists("../res/", filename)
+#    # Fix l8r
+#end
+
+__InpCSVDIR = joinpath(@__DIR__, "..", "res/data")
 global dir = joinpath(__InpCSVDIR, filename)
 
 """
