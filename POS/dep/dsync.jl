@@ -27,15 +27,11 @@ using .kfMod
 →(p::Bool, q::Bool) = !p .|| q # alternative arrow
 ⟹(p::Bool, q::Bool) = !p .|| q
 
-cState::Vector{Bool} = zeros(1) # client state at time t, outputs 1 or 0
-sState::Vector{Bool} = zeros(1) # server state at time t, outputs 1 or 0
+#cStates::Vector{Bool} = zeros(1) # client state at time t, outputs 1 or 0
+#sStates::Vector{Bool} = zeros(1) # server state at time t, outputs 1 or 0
 
-deleteat!(cState, 1)
-deleteat!(sState, 1)
-
-# FIX L8R
-#cState = getClientState()
-#sState = getServerState()
+#deleteat!(cState, 1)
+#deleteat!(sState, 1)
 
 """
     sdi(Boolean, Boolean)
@@ -48,9 +44,9 @@ deleteat!(sState, 1)
                that acts on Sᵢ and Sₛ at time t. Then, D(t) = 1[Sᵢ(t) ≠ Sₛ(t)].
 
     Logic:
-               (p ⟹ ~p) && q:
+               (p ⟹ ¬p) && q:
 
-               p | q | p ⟹ ~p | (p ⟹ ~p) && q
+               p | q | p ⟹ ¬p | (p ⟹ ¬p) && q
                1 | 1 |    0    |       0
                1 | 0 |    0    |       0
                0 | 1 |    1    |       1
@@ -79,5 +75,12 @@ function sdi(ClientState::Vector{Bool}, ServerState::Vector{Bool})
 
     return temp
 end
+
+sdis = Int[]
+
+#push!(sdis, sdi(getClientState(df), getServerState(df)))
+
+# NOT WORKING YET, NEED TO UPDATE CSV FOR SYSTEM STATES
+@printf("%d", sdi(getClientState(df), getServerState(df)))
 
 end
