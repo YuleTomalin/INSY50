@@ -25,7 +25,7 @@ First, we need to identify when does latency come about at the start of the tran
 **Usage** 
 -
 
-At this current moment, the software is still under development and no available *Release* versions have been published as of late. Therefore no usage instructions will be provided at the moment. 
+At this current moment, the web application is still under development and no available *Release* versions have been published as of late. Therefore no usage instructions will be provided at the moment. 
 ;)
 
 

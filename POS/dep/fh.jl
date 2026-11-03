@@ -26,7 +26,7 @@ export __DesDirPDF
 __DesDirPDF = joinpath(@__DIR__, "../res/sdiplot.pdf")
 
 
-filename::String = "transactions_2000.csv"
+filename::String = "transactions_2000_states.csv"
 
 #if exists("../res/", filename)
 #    # Fix l8r

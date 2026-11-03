@@ -56,7 +56,7 @@ using .kfMod
                     not yet completed, and the server is still processing the transaction."
 
                     Another one is, sdi(0, 1) = [1] could be interpreted as "the client haven't
-                    even started the transaction and the server already logged the data."
+                    even started the transaction and the server already finished logging the data."
 
     Example:
     @Transaction 45, the system recorded finished client-side (1) and unfinished server-side (0). 
@@ -64,10 +64,14 @@ using .kfMod
     ...
 """
 function sdi(ClientState::Vector{Bool}, ServerState::Vector{Bool})
-    NotClientState = !ClientState
+    NotClientState = Vector{Bool}
+    for c ∈ ClientState
+        push!(NotClientState, !c)
+    end
     temp = Int[]
 
-    if (ClientState ⟹ NotClientState) && ServerState    # (p ⟹ ~p) && q
+    # Need to be run on loop/item
+    if (ClientState .⟹ NotClientState) .&& ServerState    # (p ⟹ ~p) && q
         push!(temp, 1)
     else 
         push!(temp, 0)
@@ -75,6 +79,8 @@ function sdi(ClientState::Vector{Bool}, ServerState::Vector{Bool})
 
     return temp
 end
+
+#TODO Condition @ (1, 0)
 
 sdis = Int[]
 
