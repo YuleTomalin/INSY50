@@ -24,6 +24,14 @@ export plotStdInnov
 
 #==========#
 
+
+# 1D Vectors for Cstate and Sstate
+cst = getClientState(df)
+sst = getServerState(df)
+
+onezeroarr = sdi(cst, sst) # => Array of 1s and 0s
+
+
 """
     plotStdInnov(AbstractDataFrame, Float64, String, Bool, String)
     ...
@@ -33,7 +41,7 @@ export plotStdInnov
     directory where the PDF should go.
     ...
 """
-function plotStdInnov(steps::Vector{Int32}, standardized_innovation::Vector{Float64},  xlbl_main::String, toPdf::Bool, dirPdf::String)
+function plotStdInnov(steps::Vector{Int32}, standardized_innovation::Vector{Float64},  onezeroarr::Vector{Int64}, xlbl_main::String, toPdf::Bool, dirPdf::String)
     gr()
 
     max_innov, max_idx_innov = findmaxima(standardized_innovation)
@@ -45,17 +53,10 @@ function plotStdInnov(steps::Vector{Int32}, standardized_innovation::Vector{Floa
     scatter!([min_innov], [min_idx_innov], legend_marker_shapesize=2,label="SI Min / Transaction", mc=:green,ma=1, ms=1)
     hline!([3.97, -3.97], color=:black, ls=:dash, label="±3.97")
 
-    # Right plot
-    p_dens = density(standardized_innovation, label="Actual Distribution", xlabel="Value", ylabel="Density", lc=:red, fill=(0, 0.2, :red), xlims=(-20, 20))
+    # Combining them on top of one another
+    p_desync = plot(steps, onezeroarr, seriestype=:steppost, label="SDI", xlabel="Transactions", ylabel="State Divergence", yticks=([0, 1], ["Synchronized", "Divergent"]), ylims=(-0.1, 1.1), lc=:blue, lw=1.5)
 
-    # Normal Dist Overlay
-    standard_normal(x) = exp(-x^2 / 2) / sqrt(2π)
-    plot!(p_dens, standard_normal, -5, 5, label="Theoretical N(0, 1)", color=:black, lw=1.5, ls=:dash)
-
-    custom_layout = grid(1, 2, widths=[0.75, 0.25])
-
-    # Combining then side-by-side
-    fpl = plot(p_seq, p_dens, layout=custom_layout, size=(2560, 1440), title=["Innovation Sequence" "Distribution Profile"], bottom_margin=10mm, left_margin=10mm)
+    fpl = plot(p_seq, p_desync, layout=(2, 1), link=:x, size=(2560, 1440), left_margin=10mm, bottom_margin=10mm, plot_title="Latency Anomaly and State Divergence Analysis")
 
     if toPdf == true
         Plots.pdf(fpl, dirPdf)
@@ -66,37 +67,8 @@ function plotStdInnov(steps::Vector{Int32}, standardized_innovation::Vector{Floa
     end
 end
 
+plotStdInnov(getSteps(df), std_innov, onezeroarr, "Transaction Steps", true, __SDirPDF)
 
-# 1D Vectors for Cstate and Sstate
-cst = getClientState(df)
-sst = getServerState(df)
-
-onezeroarr = sdi(cst, sst) # => Array of 1s and 0s
-
-
-"""
-    plotDesync()
-    ...
-    Plot the desynchronization gathered from dsync.jl. Output to PDF, given true or false, and the directory where to put the PDF file.
-    ...
-"""
-function plotDesync(steps::Vector{Int32}, datapoints::Vector{Int64}, toPdf::Bool, dirPdf::String)
-    gr()
-
-    dspl = density(steps[1:end], datapoints, label="Desynchronization Model", xlabel="Transactions", ylabel="Desync Probability", lc=:red, fill=(0, 0.3, :red))
-
-    #TODO: Make
-
-    if toPdf == true
-        Plots.pdf(dspl, dirPdf)
-        println("PDF Export complete. Exported to: ", dirPdf)
-    else 
-        gui()
-        readline()
-    end
-end
-
-#plotStdInnov(getSteps(df), std_innov, "Transaction Steps (Jun, 2026 - Oct, 2026), 30 to 70 transactions @ specific dates", true, __SDirPDF)
-plotDesync(getSteps(df), onezeroarr, true, __DesDirPDF)
+## SUGGESTED: ADD ANOTHER FUNCTION, THE CO-OCCURENCE INDICATOR TO SERVE THE LAST PROBLEM (NO AI)
 
 end # module

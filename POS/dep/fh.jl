@@ -1,7 +1,7 @@
 """
     Written by: yuto
     Created At: 2026年(令和8)10月12日
-    Description: File handling file for GAIA.
+    Description: File handling for GAIA.
 """
 
 # TODO: [ADMIN PAGE] ask admin what to name CSV files
@@ -27,7 +27,7 @@ __SDirPDF = joinpath(@__DIR__, "../res/dataplot.pdf")
 export __DesDirPDF
 __DesDirPDF = joinpath(@__DIR__, "../res/sdiplot.pdf")
 
-
+# ON SITE: add a choice on ADMIN PANEL/PAGE where the admin could type the directory and will be used in here + title of CSV file"
 filename::String = "transactions_2000_states.csv"
 
 # TODO
