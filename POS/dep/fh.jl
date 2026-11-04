@@ -15,10 +15,12 @@ module fhMod
 using CSV, DataFrames, Dates, Parsers#, FilePathsBase
 
 # Functions
-export getClientTime, getServerTime, getCSV, dir, std_innov, getSteps, getClientState, getServerState
+export getClientTime, getServerTime, getCSV, dir, std_innov, getSteps
+export getClientState, getServerState
 
 #==========#
 
+# Plot save directories
 export __SDirPDF
 __SDirPDF = joinpath(@__DIR__, "../res/dataplot.pdf")
 
@@ -28,6 +30,7 @@ __DesDirPDF = joinpath(@__DIR__, "../res/sdiplot.pdf")
 
 filename::String = "transactions_2000_states.csv"
 
+# TODO
 #if exists("../res/", filename)
 #    # Fix l8r
 #end
@@ -123,4 +126,4 @@ function getSteps(df::DataFrame)
     return transstep
 end
 
-end # module
+end

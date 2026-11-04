@@ -16,22 +16,12 @@ include("fh.jl")
 include("kalmf.jl")
 
 # Functions
-export sdi
 using .fhMod
 using .kfMod
+export sdi
 
 
 #==========#
-
-# Defining a custom operator func for ⟹:
-→(p::Bool, q::Bool) = !p .|| q # alternative arrow
-⟹(p::Bool, q::Bool) = !p .|| q
-
-#cStates::Vector{Bool} = zeros(1) # client state at time t, outputs 1 or 0
-#sStates::Vector{Bool} = zeros(1) # server state at time t, outputs 1 or 0
-
-#deleteat!(cState, 1)
-#deleteat!(sState, 1)
 
 """
     sdi(Boolean, Boolean)
@@ -64,29 +54,7 @@ using .kfMod
     ...
 """
 function sdi(ClientState::Vector{Bool}, ServerState::Vector{Bool})
-    NotClientState = Vector{Bool}
-    for c ∈ ClientState
-        push!(NotClientState, !c)
-    end
-    temp = Int[]
-
-    # Need to be run on loop/item
-    if (ClientState .⟹ NotClientState) .&& ServerState    # (p ⟹ ~p) && q
-        push!(temp, 1)
-    else 
-        push!(temp, 0)
-    end
-
-    return temp
+    return Int.(.!ClientState .& ServerState)
 end
-
-#TODO Condition @ (1, 0)
-
-sdis = Int[]
-
-#push!(sdis, sdi(getClientState(df), getServerState(df)))
-
-# NOT WORKING YET, NEED TO UPDATE CSV FOR SYSTEM STATES
-@printf("%d", sdi(getClientState(df), getServerState(df)))
 
 end

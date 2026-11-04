@@ -66,19 +66,29 @@ function plotStdInnov(steps::Vector{Int32}, standardized_innovation::Vector{Floa
     end
 end
 
+
+# 1D Vectors for Cstate and Sstate
+cst = getClientState(df)
+sst = getServerState(df)
+
+onezeroarr = sdi(cst, sst) # => Array of 1s and 0s
+
+
 """
     plotDesync()
     ...
     Plot the desynchronization gathered from dsync.jl. Output to PDF, given true or false, and the directory where to put the PDF file.
     ...
 """
-function plotDesync(steps::Vector{Int32}, datapoints::Vector{Int32}, toPdf::Bool, dirPdf::String)
+function plotDesync(steps::Vector{Int32}, datapoints::Vector{Int64}, toPdf::Bool, dirPdf::String)
     gr()
 
-    # plot code here
+    dspl = density(steps[1:end], datapoints, label="Desynchronization Model", xlabel="Transactions", ylabel="Desync Probability", lc=:red, fill=(0, 0.3, :red))
+
+    #TODO: Make
 
     if toPdf == true
-        Plots.pdf(fpl, dirPdf)
+        Plots.pdf(dspl, dirPdf)
         println("PDF Export complete. Exported to: ", dirPdf)
     else 
         gui()
@@ -86,6 +96,7 @@ function plotDesync(steps::Vector{Int32}, datapoints::Vector{Int32}, toPdf::Bool
     end
 end
 
-plotStdInnov(getSteps(df), std_innov, "Transaction Steps (Jun, 2026 - Oct, 2026), 30 to 70 transactions @ specific dates", true, __SDirPDF)
+#plotStdInnov(getSteps(df), std_innov, "Transaction Steps (Jun, 2026 - Oct, 2026), 30 to 70 transactions @ specific dates", true, __SDirPDF)
+plotDesync(getSteps(df), onezeroarr, true, __DesDirPDF)
 
 end # module
