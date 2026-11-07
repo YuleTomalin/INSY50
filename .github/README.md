@@ -38,7 +38,7 @@ This program is built in assistance of a GenAI but it did not contribute directl
 -
 
 - [@Yuto](https://github.com/YuleTomalin) (Head Developer, Repository Manager)
-- [@Juuri-hue](https://github.com/Juuri-hue) (Head Website Developer)
+- [@Juuri-hue](https://github.com/Juuri-hue)
 
 **License**
 -

@@ -38,5 +38,3 @@ import Pkg; Pkg.add("KalmanFilters")
 import Pkg; Pkg.add("StatsPlots")
 import Pkg; Pkg.add("Measures")
 =#
-
-#__RelDIR = joinpath(@__DIR__, "main.jl")

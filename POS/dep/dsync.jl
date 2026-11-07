@@ -1,11 +1,8 @@
 """
     Written by: yuto
     Created At: 2026年(令和8)10月25日
-    Description: Desynchronization checker for GAIA. Given the client state and server state at a transaction step.
+    Description: Desynchronization checker for GAIA. Given the client state and server state per transaction step.
 """
-
-#TODO: Connect input data from fh.jl to here (get..() to cState and sState)
-#      @ fh.jl, add new getClientState and getServerState. Add two new cols [7 & 8] on CSV (ClientDone & ServerDone)
 
 module desMod
 # Using
@@ -54,7 +51,7 @@ export sdi
     ...
 """
 function sdi(ClientState::Vector{Bool}, ServerState::Vector{Bool})
-    return Int.(.!ClientState .& ServerState)
+    return Int.(.!ClientState .& ServerState) # quicker than other methods
 end
 
 end

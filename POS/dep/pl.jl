@@ -1,11 +1,11 @@
 """
     Written by: yuto
     Created At: 2026年(令和8)10月12日
-    Description: This file is the main plotting file for GAIA. It outputs the ...
+    Description: This file is the main plotting file for GAIA. It outputs the required plots
+                 for evaluation of the system at specific steps of transactions and time.
 """
 
-#TODO:  Add plot for Desynchronization
-#       replace with customisable options [1-Wk Trans, 2-Wk Trans, 1-Month, 3-Months] (Connect to Dashboard l8r)
+#TODO: Add customisable options [1-Wk Trans, 2-Wk Trans, 1-Month, 3-Months] (Connect to Dashboard l8r)
 
 module plMod
 # Using
@@ -33,16 +33,17 @@ onezeroarr = sdi(cst, sst) # => Array of 1s and 0s
 
 
 """
-    plotStdInnov(AbstractDataFrame, Float64, String, Bool, String)
+    plotStdInnov(Int32[], Float64[], Int64[], String, Bool, String)
     ...
-    Plot the Standardized Innovation (rₜ) against a standard normal based on 
-    the transaction steps and rₜ. Input also a x label of the innovation (See Plots.jl). 
-    If user wants to print to PDF (true) or just show to screen (false), also pass the 
-    directory where the PDF should go.
+    Plot the Standardized Innovation (rₜ) based on the transaction steps and rₜ. 
+    Input also an x label of the innovation (See Plots.jl). If user wants to 
+    print to PDF (true) or just show to screen (false), also pass the 
+    directory where the PDF should go. Outputs a PDF of a graph or a graph itself.
     ...
 """
-function plotStdInnov(steps::Vector{Int32}, standardized_innovation::Vector{Float64},  onezeroarr::Vector{Int64}, xlbl_main::String, toPdf::Bool, dirPdf::String)
-    gr()
+@time function plotStdInnov(steps::Vector{Int32}, standardized_innovation::Vector{Float64}, 
+                      onezeroarr::Vector{Int64}, xlbl_main::String, toPdf::Bool, dirPdf::String)
+    gr() # start plot
 
     max_innov, max_idx_innov = findmaxima(standardized_innovation)
     min_innov, min_idx_innov = findminima(standardized_innovation)
@@ -69,6 +70,53 @@ end
 
 plotStdInnov(getSteps(df), std_innov, onezeroarr, "Transaction Steps", true, __SDirPDF)
 
-## SUGGESTED: ADD ANOTHER FUNCTION, THE CO-OCCURENCE INDICATOR TO SERVE THE LAST PROBLEM (NO AI)
+#=
+"""
+    cif(Int32[], Float64[], Int64[], Bool, String)
+    ...
+    The Cooccurence Indicator Function. It will tell whether the given dataset
+    was either general latency, general desynchronization, or having both, which
+    is latency-induced desynchronization. This is the final number needed to identify
+    whether the system really was experiencing problems during operating times, or
+    just a minor inconvenience durig peak-hours where transaction rates are 
+    continuous. Outputs a PDF of a graph or a graph itself.
+    ...
+"""
+@time function cif(steps::Vector{Int32}, SI::Vector{Float64}, SDI::Vector{Int64}, toPdf::Bool, dirPdf::String)
+    
+    
+    for s ∈ SI
+        for sd ∈ SDI
+            if s .> 3.97 .&& sd .== 1
+                # Latency-induced Desync
+            elseif s .< -3.97 .&& sd .== 1
+                # Latency-induced Desync
+            elseif s .> 3.97 .&& sd .== 0
+                # General Latency
+            elseif s .< -3.97 .&& sd .== 0
+                # General Latency
+            elseif (s .<= 3.97 .&& s .>= -3.97) .&& sd .== 1
+                # General Desync (Anomalous)
+            elseif (s .<= 3.97 .&& s .>= -3.97) .&& sd .== 0
+                # Normal, no latency or desync happened, return some value
+            else
+                error("Error: invalid input of data...")
+            end
+        end
+    end
 
+    gr()
+
+    # PLOT CODE HERE
+
+    if toPdf == true
+        Plots.pdf(fpl, dirPdf)
+        println("PDF Export complete. Exported to: ", dirPdf)
+    else 
+        gui()
+        readline()
+    end
+    # TODO: Complete This function and plot data against steps
+end
+=#
 end # module
