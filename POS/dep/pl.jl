@@ -5,7 +5,7 @@
                  for evaluation of the system at specific steps of transactions and time.
 """
 
-#TODO: Add customisable options [1-Wk Trans, 2-Wk Trans, 1-Month, 3-Months] (Connect to Dashboard l8r)
+#TODO: FInish cif (before thursday)
 
 module plMod
 # Using
@@ -24,6 +24,25 @@ export plotStdInnov
 
 #==========#
 
+#TODO (Until Nov. 26): Complete functions, and connect Julia code in some way from C# site
+
+"""
+
+    ...
+    ...
+"""
+function setmin(inputVect::Vector)
+
+end
+
+"""
+
+    ...
+    ...
+"""
+function setmax(inputVect::Vector)
+end
+
 
 # 1D Vectors for Cstate and Sstate
 cst = getClientState(df)
@@ -41,7 +60,7 @@ onezeroarr = sdi(cst, sst) # => Array of 1s and 0s
     directory where the PDF should go. Outputs a PDF of a graph or a graph itself.
     ...
 """
-@time function plotStdInnov(steps::Vector{Int32}, standardized_innovation::Vector{Float64}, 
+function plotStdInnov(steps::Vector{Int32}, standardized_innovation::Vector{Float64}, 
                       onezeroarr::Vector{Int64}, xlbl_main::String, toPdf::Bool, dirPdf::String)
     gr() # start plot
 
@@ -70,7 +89,40 @@ end
 
 plotStdInnov(getSteps(df), std_innov, onezeroarr, "Transaction Steps", true, __SDirPDF)
 
-#=
+
+@enum TransCond begin
+    NORMAL
+    LATENCY_ANOMALY
+    STATE_DESYNC
+    LATENCY_DESYNC
+end
+
+"""
+    classifyTransaction(Float, Int)
+    ... 
+    ...
+"""
+function classifyTransaction(s::Float64, sd::Int64)
+    threshold = 3.97
+
+    if sd != 0 && sd != 1
+        error("Invalid SDI value: expected 0 or 1.")
+    end
+
+    if abs(s) > threshold && sd == 1
+        return LATENCY_DESYNC
+
+    elseif abs(s) > threshold && sd == 0
+        return LATENCY_ANOMALY
+
+    elseif abs(s) <= threshold && sd == 1
+        return STATE_DESYNC
+
+    else
+        return NORMAL
+    end
+end
+
 """
     cif(Int32[], Float64[], Int64[], Bool, String)
     ...
@@ -79,44 +131,38 @@ plotStdInnov(getSteps(df), std_innov, onezeroarr, "Transaction Steps", true, __S
     is latency-induced desynchronization. This is the final number needed to identify
     whether the system really was experiencing problems during operating times, or
     just a minor inconvenience durig peak-hours where transaction rates are 
-    continuous. Outputs a PDF of a graph or a graph itself.
+    continuous. Outputs a PDF of a graph or a graph itself. SI = Standardized innovation
+    SDI = State Divergence Indicator
     ...
 """
-@time function cif(steps::Vector{Int32}, SI::Vector{Float64}, SDI::Vector{Int64}, toPdf::Bool, dirPdf::String)
-    
-    
-    for s ∈ SI
-        for sd ∈ SDI
-            if s .> 3.97 .&& sd .== 1
-                # Latency-induced Desync
-            elseif s .< -3.97 .&& sd .== 1
-                # Latency-induced Desync
-            elseif s .> 3.97 .&& sd .== 0
-                # General Latency
-            elseif s .< -3.97 .&& sd .== 0
-                # General Latency
-            elseif (s .<= 3.97 .&& s .>= -3.97) .&& sd .== 1
-                # General Desync (Anomalous)
-            elseif (s .<= 3.97 .&& s .>= -3.97) .&& sd .== 0
-                # Normal, no latency or desync happened, return some value
-            else
-                error("Error: invalid input of data...")
-            end
-        end
+function cif(steps::Vector{Int32}, SI::Vector{Float64}, SDI::Vector{Int64}, TransactionCondition, toPdf::Bool, dirPdf::String)
+    if !(length(steps) == length(SI) == length(SDI))
+        error("Input vectors must have matching lengths.")
+    end
+
+    conditions = TransactionCondition[]
+
+    for (s, sd) ∈ zip(SI, SDI)
+        push!(conditions, classifyTransaction(s, sd))
     end
 
     gr()
 
-    # PLOT CODE HERE
+    p = plot(steps[2:end], SI[2:end], label="SI", lc=:lightblue, alpha=0.85, lw=0.30)
+    scatter!(SDI[2:end], label="SDI", mc=:red, ma=1, ms=0.5)
+    #scatter!(conditions, label="CONDS", mc=:green, ma=0.8, ms=3)
+
 
     if toPdf == true
-        Plots.pdf(fpl, dirPdf)
+        Plots.pdf(p, dirPdf)
         println("PDF Export complete. Exported to: ", dirPdf)
     else 
         gui()
         readline()
     end
-    # TODO: Complete This function and plot data against steps
 end
-=#
+
+cif(getSteps(df), std_innov, onezeroarr, TransCond, true, __DesDirPDF)
+
+
 end # module

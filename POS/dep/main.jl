@@ -37,4 +37,6 @@ import Pkg; Pkg.add("Parsers")
 import Pkg; Pkg.add("KalmanFilters")
 import Pkg; Pkg.add("StatsPlots")
 import Pkg; Pkg.add("Measures")
+import Pkg; Pkg.add("Oxygen")
+import Pkg; Pkg.add("HTTP")
 =#

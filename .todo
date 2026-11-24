@@ -1,0 +1,8 @@
+(DELETE L8R BEFORE COMMIT)
+
+TODO
+pl.jl: Finish cif (before thursday)
+fh.jl: [ADMIN PAGE] ask admin what to name CSV files (add a choice on ADMIN PANEL/PAGE where the admin could type the directory and will be used in here + title of CSV file")
+     : automated zip extraction (Optional)
+     : Find a way to automate finding of csv files
+     : Test if all files work
