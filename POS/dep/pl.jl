@@ -5,8 +5,6 @@
                  for evaluation of the system at specific steps of transactions and time.
 """
 
-#TODO: FInish cif (before thursday)
-
 module plMod
 # Using
 using Plots, Measures, LaTeXStrings, Peaks, DataFrames
@@ -26,23 +24,6 @@ export plotStdInnov
 
 #TODO (Until Nov. 26): Complete functions, and connect Julia code in some way from C# site
 
-"""
-
-    ...
-    ...
-"""
-function setmin(inputVect::Vector)
-
-end
-
-"""
-
-    ...
-    ...
-"""
-function setmax(inputVect::Vector)
-end
-
 
 # 1D Vectors for Cstate and Sstate
 cst = getClientState(df)
@@ -60,21 +41,22 @@ onezeroarr = sdi(cst, sst) # => Array of 1s and 0s
     directory where the PDF should go. Outputs a PDF of a graph or a graph itself.
     ...
 """
-function plotStdInnov(steps::Vector{Int32}, standardized_innovation::Vector{Float64}, 
-                      onezeroarr::Vector{Int64}, xlbl_main::String, toPdf::Bool, dirPdf::String)
+function plotStdInnov(steps::Vector{Int32}, standardized_innovation::Vector{Float64}, onezeroarr::Vector{Int64}, 
+                      xlbl_main::String, toPdf::Bool, dirPdf::String, lowerBound::Int64, upperBound::Int64)
     gr() # start plot
 
     max_innov, max_idx_innov = findmaxima(standardized_innovation)
     min_innov, min_idx_innov = findminima(standardized_innovation)
 
-    # Left plot
-    p_seq = plot(steps[2:end], standardized_innovation[2:end], label="Std Innov", xlabel=xlbl_main, ylabel="Value", lc=:red, alpha=0.8, lw=:0.7, ylims=(-35, 50))
-    scatter!([max_innov], [max_idx_innov], label="SI ±Peaks per Transaction", mc=:black, ma=1, ms=3)
-    scatter!([min_innov], [min_idx_innov], legend_marker_shapesize=2,label="SI Min / Transaction", mc=:green,ma=1, ms=1)
+    # Use "end" only if needed
+    p_seq = plot(steps[lowerBound:upperBound], standardized_innovation[lowerBound:upperBound], label="Std Innov", xlabel=xlbl_main, ylabel="Value", lc=:red, alpha=0.8, lw=:0.7, ylims=(-35, 50))
+    # Find a way to remove these
+    #scatter!([max_innov], [max_idx_innov], label="SI ±Peaks per Transaction", mc=:black, ma=1, ms=3)
+    #scatter!([min_innov], [min_idx_innov], legend_marker_shapesize=2,label="SI Min / Transaction", mc=:green,ma=1, ms=1)
     hline!([3.97, -3.97], color=:black, ls=:dash, label="±3.97")
 
-    # Combining them on top of one another
-    p_desync = plot(steps, onezeroarr, seriestype=:steppost, label="SDI", xlabel="Transactions", ylabel="State Divergence", yticks=([0, 1], ["Synchronized", "Divergent"]), ylims=(-0.1, 1.1), lc=:blue, lw=1.5)
+    # also this
+    p_desync = plot(steps[lowerBound:upperBound], onezeroarr[lowerBound:upperBound], seriestype=:steppost, label="SDI", xlabel="Transactions", ylabel="State Divergence", yticks=([0, 1], ["Synchronized", "Divergent"]), ylims=(-0.1, 1.1), lc=:blue, lw=1.5)
 
     fpl = plot(p_seq, p_desync, layout=(2, 1), link=:x, size=(2560, 1440), left_margin=10mm, bottom_margin=10mm, plot_title="Latency Anomaly and State Divergence Analysis")
 
@@ -87,7 +69,7 @@ function plotStdInnov(steps::Vector{Int32}, standardized_innovation::Vector{Floa
     end
 end
 
-plotStdInnov(getSteps(df), std_innov, onezeroarr, "Transaction Steps", true, __SDirPDF)
+plotStdInnov(getSteps(df), std_innov, onezeroarr, "Transaction Steps", true, __SDirPDF, 2, 500)
 
 
 @enum TransCond begin
@@ -124,7 +106,7 @@ function classifyTransaction(s::Float64, sd::Int64)
 end
 
 """
-    cif(Int32[], Float64[], Int64[], Bool, String)
+    cif(Int32[], Float64[], Int64[], Bool, String, Int32, Int32)
     ...
     The Cooccurence Indicator Function. It will tell whether the given dataset
     was either general latency, general desynchronization, or having both, which
@@ -135,7 +117,8 @@ end
     SDI = State Divergence Indicator
     ...
 """
-function cif(steps::Vector{Int32}, SI::Vector{Float64}, SDI::Vector{Int64}, TransactionCondition, toPdf::Bool, dirPdf::String)
+function cif(steps::Vector{Int32}, SI::Vector{Float64}, SDI::Vector{Int64}, 
+             TransactionCondition, toPdf::Bool, dirPdf::String, lowerBound::Int64, upperBound::Int64)
     if !(length(steps) == length(SI) == length(SDI))
         error("Input vectors must have matching lengths.")
     end
@@ -148,8 +131,8 @@ function cif(steps::Vector{Int32}, SI::Vector{Float64}, SDI::Vector{Int64}, Tran
 
     gr()
 
-    p = plot(steps[2:end], SI[2:end], label="SI", lc=:lightblue, alpha=0.85, lw=0.30)
-    scatter!(SDI[2:end], label="SDI", mc=:red, ma=1, ms=0.5)
+    p = plot(steps[lowerBound:upperBound], SI[lowerBound:upperBound], label="SI", lc=:lightblue, alpha=0.85, lw=0.30)
+    scatter!(SDI[lowerBound:upperBound], label="SDI", mc=:red, ma=1, ms=0.5)
     #scatter!(conditions, label="CONDS", mc=:green, ma=0.8, ms=3)
 
 
@@ -162,7 +145,7 @@ function cif(steps::Vector{Int32}, SI::Vector{Float64}, SDI::Vector{Int64}, Tran
     end
 end
 
-cif(getSteps(df), std_innov, onezeroarr, TransCond, true, __DesDirPDF)
+cif(getSteps(df), std_innov, onezeroarr, TransCond, true, __DesDirPDF, 2, 500)
 
 
 end # module

@@ -4,11 +4,6 @@
     Description: File handling for GAIA.
 """
 
-# TODO: [ADMIN PAGE] ask admin what to name CSV files
-#     : automated zip extraction (Optional)
-#     : Find a way to automate finding of csv files
-#     : Test if all files work
-
 module fhMod
 
 # Using
@@ -17,6 +12,7 @@ using CSV, DataFrames, Dates, Parsers#, FilePathsBase
 # Functions
 export getClientTime, getServerTime, getCSV, dir, std_innov, getSteps
 export getClientState, getServerState
+export get_fn_fd_web
 
 #==========#
 
@@ -27,13 +23,19 @@ __SDirPDF = joinpath(@__DIR__, "../res/dataplot.pdf")
 export __DesDirPDF
 __DesDirPDF = joinpath(@__DIR__, "../res/sdiplot.pdf")
 
+#Do l8r TODO: need server.pl
+"""
+    get_fn_fd_web(String, String)
+    ...
+    Get the file name and directory from the site.
+    ...
+"""
+function get_fn_fd_web(filename::String, filedir::String)
+    # do after Julia end is finished
+end
+
 # ON SITE: add a choice on ADMIN PANEL/PAGE where the admin could type the directory and will be used in here + title of CSV file"
 filename::String = "transactions_2000_states.csv"
-
-# TODO
-#if exists("../res/", filename)
-#    # Fix l8r
-#end
 
 __InpCSVDIR = joinpath(@__DIR__, "..", "res/data")
 global dir = joinpath(__InpCSVDIR, filename)

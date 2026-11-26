@@ -14,7 +14,12 @@ using Oxygen, HTTP
 
 #==========#
 
-@post "/{nameofendpoint | change later}" function(req::HTTP.Request)
+# TODO: [ADMIN PAGE] ask admin what to name CSV files
+#     : automated zip extraction (Optional)
+#     : Find a way to automate finding of csv files
+#     : Test if all files work
+
+@post "/..." function(req::HTTP.Request)
     data = json(req)
     #=
     Put processing data here
